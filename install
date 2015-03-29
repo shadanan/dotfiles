@@ -2,7 +2,14 @@
 
 export DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-[ -d "$DOTFILES_DIR/.git" ] && git --work-tree="$DOTFILES_DIR" --git-dir="$DOTFILES_DIR/.git" pull origin master
+if [ -d "$DOTFILES_DIR/.git" ]; then
+	git --work-tree="$DOTFILES_DIR" --git-dir="$DOTFILES_DIR/.git" pull origin master
+fi
+
+if [ -e "$DOTFILES_DIR/.gitmodules"]; then
+	git --work-tree="$DOTFILES_DIR" --git-dir="$DOTFILES_DIR/.git" submodule init
+	git --work-tree="$DOTFILES_DIR" --git-dir="$DOTFILES_DIR/.git" submodule update
+fi
 
 ln -sfv "$DOTFILES_DIR/.antigen" ~
 ln -sfv "$DOTFILES_DIR/.zshrc" ~
