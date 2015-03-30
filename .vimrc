@@ -1,5 +1,3 @@
-set background=dark             " Assume a dark background
-
 syntax on                       " Syntax highlighting
 filetype plugin indent on       " Automatically detect file types.
 scriptencoding utf-8
