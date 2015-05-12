@@ -11,7 +11,7 @@ antigen bundle vagrant
 antigen bundle zsh-users/zsh-syntax-highlighting
 
 # Git super status
-antigen bundle olivierverdier/zsh-git-prompt
+antigen bundle shadanan/zsh-git-prompt
 
 # Load the theme.
 antigen theme shadanan/oh-my-zsh-themes shad
