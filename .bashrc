@@ -127,7 +127,7 @@ fi
 
 function set_ps1 {
 	export PS1="$Purple\u$Color_Off@$Yellow\h$Color_Off:$BBlue\w$Color_Off"
-	export PS1="$PS1\n$IBlack\D{%F %T}$Color_Off [$IYellow\!$Color_Off] $ "
+	export PS1="$PS1\n$Green\D{%F %T}$Color_Off [$IYellow\!$Color_Off] $ "
 }
 
 export PROMPT_COMMAND='history -a;set_ps1'
