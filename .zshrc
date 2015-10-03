@@ -18,3 +18,8 @@ antigen theme shadanan/oh-my-zsh-themes shad
 
 # Tell antigen that you're done.
 antigen apply
+
+# Configure pyenv
+export PYENV_ROOT=/usr/local/var/pyenv
+if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
+if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
