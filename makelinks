@@ -1,0 +1,10 @@
+#!/bin/bash
+
+ln -sfv "$DOTFILES_DIR/.antigen" ~
+ln -sfv "$DOTFILES_DIR/.profile" ~
+ln -sfv "$DOTFILES_DIR/.zshrc" ~
+ln -sfv "$DOTFILES_DIR/.vimrc" ~
+ln -sfv "$DOTFILES_DIR/.screenrc" ~
+ln -sfv "$DOTFILES_DIR/.bashrc" ~
+ln -sfv "$DOTFILES_DIR/.bash_profile" ~
+ln -sfv "$DOTFILES_DIR/.bash-git-prompt" ~
