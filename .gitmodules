@@ -1,3 +1,6 @@
 [submodule ".antigen"]
 	path = .antigen
 	url = https://github.com/zsh-users/antigen.git
+[submodule ".bash-git-prompt"]
+	path = .bash-git-prompt
+	url = https://github.com/magicmonty/bash-git-prompt.git

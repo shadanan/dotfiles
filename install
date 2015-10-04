@@ -15,4 +15,4 @@ ln -sfv "$DOTFILES_DIR/.vimrc" ~
 ln -sfv "$DOTFILES_DIR/.screenrc" ~
 ln -sfv "$DOTFILES_DIR/.bashrc" ~
 ln -sfv "$DOTFILES_DIR/.bash_profile" ~
-ln -sfv "$DOTFILES_DIR/.bash-init-scripts" ~
+ln -sfv "$DOTFILES_DIR/.bash-git-prompt" ~
