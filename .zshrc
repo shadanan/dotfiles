@@ -23,3 +23,9 @@ antigen apply
 export PYENV_ROOT=/usr/local/var/pyenv
 if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
+
+# Configure hub
+if which hub > /dev/null; then eval eval "$(hub alias -s)"; fi
+
+# Source shared aliases
+source ~/.sharedrc

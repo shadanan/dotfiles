@@ -56,3 +56,6 @@ GIT_PROMPT_STASHED="${BoldBlue}⚑"
 GIT_PROMPT_START="$Magenta\u$ResetColor@$Yellow\h$ResetColor:$BoldBlue\w$ResetColor"
 GIT_PROMPT_END="\n$Green\D{%F %T}$ResetColor [$BoldYellow\!$ResetColor] $ "
 . "$__GIT_PROMPT_DIR/gitprompt.sh"
+
+# Source shared aliases
+source ~/.sharedrc
