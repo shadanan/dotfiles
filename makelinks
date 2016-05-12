@@ -1,12 +1,22 @@
 #!/bin/bash
 
 ln -sfv "$DOTFILES_DIR/.antigen" ~
-ln -sfv "$DOTFILES_DIR/.profile" ~
-ln -sfv "$DOTFILES_DIR/.zshrc" ~
+
+# vim
 ln -sfv "$DOTFILES_DIR/.vimrc" ~
+
+# screen
 ln -sfv "$DOTFILES_DIR/.screenrc" ~
-ln -sfv "$DOTFILES_DIR/.bashrc" ~
+
+# shell
 ln -sfv "$DOTFILES_DIR/.sharedrc" ~
+ln -sfv "$DOTFILES_DIR/.profile" ~
+
+# zsh
+ln -sfv "$DOTFILES_DIR/.zshrc" ~
+
+# bash
+ln -sfv "$DOTFILES_DIR/.bashrc" ~
 ln -sfv "$DOTFILES_DIR/.bash_profile" ~
 ln -sfv "$DOTFILES_DIR/.bash-git-prompt" ~
 
