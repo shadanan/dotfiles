@@ -1,0 +1,22 @@
+[user]
+	name = Shad Sharma
+	email = shad@yahoo-inc.com
+[push]
+	default = current
+[core]
+	excludesfile = /Users/shad/.gitignore_global
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[color]
+	ui = auto
+[hub]
+	host = git.corp.yahoo.com
+	host = git.corp.yahoo.com
+[filter "lfs"]
+	clean = git-lfs clean %f
+	smudge = git-lfs smudge %f
+	required = true
