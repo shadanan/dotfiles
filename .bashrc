@@ -5,19 +5,6 @@ if [ -f /etc/bashrc ]; then
 	. /etc/bashrc
 fi
 
-# User specific environment and startup programs
-if [ -d "$HOME/.local/bin" ]; then
-	export PATH="$HOME/.local/bin:$PATH"
-fi
-
-if [ -d "$HOME/.local/lib" ]; then
-	export LD_LIBRARY_PATH="$HOME/.local/lib:$LD_LIBRARY_PATH"
-fi
-
-if [ -f /usr/libexec/java_home ]; then
-	export JAVA_HOME=`/usr/libexec/java_home`
-fi
-
 if hash brew 2> /dev/null; then
 	if [ -f $(brew --prefix)/share/bash-completion/bash_completion ]; then
 		. $(brew --prefix)/share/bash-completion/bash_completion
@@ -59,3 +46,7 @@ GIT_PROMPT_END="\n$Green\D{%F %T}$ResetColor [$BoldYellow\!$ResetColor] $ "
 
 # Source shared aliases
 source ~/.sharedrc
+
+if [ -f ~/.bashenv ]; then
+	source ~/.bashenv
+fi

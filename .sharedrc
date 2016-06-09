@@ -1,4 +1,17 @@
 #!/bin/sh
+
+if [ -d "$HOME/.local/bin" ]; then
+	export PATH="$HOME/.local/bin:$PATH"
+fi
+
+if [ -d "$HOME/.local/lib" ]; then
+	export LD_LIBRARY_PATH="$HOME/.local/lib:$LD_LIBRARY_PATH"
+fi
+
+if [ -f /usr/libexec/java_home ]; then
+	export JAVA_HOME=`/usr/libexec/java_home`
+fi
+
 if hash git 2> /dev/null; then
     alias gl="git log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) -%C(bold yellow)%d%C(reset) %C(bold white)%s%C(reset)%n          %C(dim white)%an%C(reset) <%ae> -%C(reset) %C(cyan)%aD%C(reset) %C(green)(%ar)%C(reset)' --all"
 fi
