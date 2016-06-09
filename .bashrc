@@ -47,6 +47,6 @@ GIT_PROMPT_END="\n$Green\D{%F %T}$ResetColor [$BoldYellow\!$ResetColor] $ "
 # Source shared aliases
 source ~/.sharedrc
 
-if [ -f ~/.bashenv ]; then
-	source ~/.bashenv
+if [ -f "$HOME/.bashenv" ]; then
+	source "$HOME/.bashenv"
 fi
