@@ -19,6 +19,11 @@ antigen theme shadanan/oh-my-zsh-themes shad
 # Tell antigen that you're done.
 antigen apply
 
+# Enable Ctrl-x-e to edit command line
+autoload -U edit-command-line
+zle -N edit-command-line
+bindkey '^x^e' edit-command-line
+
 # Configure pyenv
 export PYENV_ROOT=/usr/local/var/pyenv
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
