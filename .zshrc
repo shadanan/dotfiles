@@ -5,27 +5,17 @@ if [ -f "$HOME/.zshenv" ]; then
 	source "$HOME/.zshenv"
 fi
 
-# Load antigen
-source ~/.antigen/antigen.zsh
+# Activate shad's zsh git prompt
+source "$HOME/.zsh-git-prompt/zshrc.sh"
 
-# Load the oh-my-zsh's library.
-antigen use oh-my-zsh
+# Path to oh-my-zsh installation
+export ZSH=$HOME/.oh-my-zsh
 
-# Bundles from the default repo (robbyrussell's oh-my-zsh).
-if which pip > /dev/null 2>&1; then antigen bundle pip; fi
-#antigen bundle vagrant
+# Set oh-my-zsh theme
+ZSH_THEME="shad"
 
-# Syntax highlighting bundle.
-antigen bundle zsh-users/zsh-syntax-highlighting
-
-# Git super status
-antigen bundle shadanan/zsh-git-prompt
-
-# Load the theme.
-antigen theme shadanan/oh-my-zsh-themes shad
-
-# Tell antigen that you're done.
-antigen apply
+# Activate oh-my-zsh
+source $ZSH/oh-my-zsh.sh
 
 # Enable Ctrl-x-e to edit command line
 autoload -U edit-command-line

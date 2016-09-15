@@ -1,6 +1,7 @@
 #!/bin/bash
 
-ln -sfv "$DOTFILES_DIR/.antigen" ~
+ln -sfv "$DOTFILES_DIR/.oh-my-zsh" ~
+ln -sfv "$DOTFILES_DIR/shad-zsh-theme" "$DOTFILES_DIR/.oh-my-zsh/custom/themes"
 
 # vim
 ln -sfv "$DOTFILES_DIR/.vimrc" ~
@@ -14,6 +15,7 @@ ln -sfv "$DOTFILES_DIR/.profile" ~
 
 # zsh
 ln -sfv "$DOTFILES_DIR/.zshrc" ~
+ln -sfv "$DOTFILES_DIR/.zsh-git-prompt" ~
 
 # bash
 ln -sfv "$DOTFILES_DIR/.bashrc" ~
