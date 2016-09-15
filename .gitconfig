@@ -1,6 +1,6 @@
 [user]
 	name = Shad Sharma
-	email = shad@yahoo-inc.com
+	email = shadanas@amazon.com
 [push]
 	default = current
 [core]
@@ -13,9 +13,6 @@
 	trustExitCode = true
 [color]
 	ui = auto
-[hub]
-	host = git.corp.yahoo.com
-	host = git.corp.yahoo.com
 [filter "lfs"]
 	clean = git-lfs clean %f
 	smudge = git-lfs smudge %f
