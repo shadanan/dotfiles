@@ -1,5 +1,12 @@
 # .bashrc
 
+# Source shared aliases
+source ~/.sharedrc
+
+if [ -f "$HOME/.bashenv" ]; then
+	source "$HOME/.bashenv"
+fi
+
 # Source global definitions
 if [ -f /etc/bashrc ]; then
 	. /etc/bashrc
@@ -43,10 +50,3 @@ GIT_PROMPT_STASHED="${BoldBlue}⚑"
 GIT_PROMPT_START="$Magenta\u$ResetColor@$Yellow\h$ResetColor:$BoldBlue\w$ResetColor"
 GIT_PROMPT_END="\n$Green\D{%F %T}$ResetColor [$BoldYellow\!$ResetColor] $ "
 . "$__GIT_PROMPT_DIR/gitprompt.sh"
-
-# Source shared aliases
-source ~/.sharedrc
-
-if [ -f "$HOME/.bashenv" ]; then
-	source "$HOME/.bashenv"
-fi
