@@ -14,6 +14,9 @@ export ZSH=$HOME/.oh-my-zsh
 # Set oh-my-zsh theme
 ZSH_THEME="shad"
 
+# Set oh-my-zsh plugins
+plugins=(zsh-syntax-highlighting)
+
 # Activate oh-my-zsh
 source $ZSH/oh-my-zsh.sh
 

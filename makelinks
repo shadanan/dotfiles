@@ -1,8 +1,5 @@
 #!/bin/bash
 
-ln -sfv "$DOTFILES_DIR/.oh-my-zsh" ~
-ln -sfv "$DOTFILES_DIR/shad-zsh-theme" "$DOTFILES_DIR/.oh-my-zsh/custom/themes"
-
 # vim
 ln -sfv "$DOTFILES_DIR/.vimrc" ~
 
@@ -16,6 +13,11 @@ ln -sfv "$DOTFILES_DIR/.profile" ~
 # zsh
 ln -sfv "$DOTFILES_DIR/.zshrc" ~
 ln -sfv "$DOTFILES_DIR/.zsh-git-prompt" ~
+ln -sfv "$DOTFILES_DIR/.oh-my-zsh" ~
+mkdir -p "$HOME/.oh-my-zsh/custom/plugins"
+ln -sfv "$DOTFILES_DIR/zsh-syntax-highlighting" "$HOME/.oh-my-zsh/custom/plugins"
+mkdir -p "$HOME/.oh-my-zsh/custom/themes"
+ln -sfv "$DOTFILES_DIR/shad-zsh-theme/shad.zsh-theme" "$HOME/.oh-my-zsh/custom/themes"
 
 # bash
 ln -sfv "$DOTFILES_DIR/.bashrc" ~
