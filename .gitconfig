@@ -4,7 +4,8 @@
 [push]
 	default = current
 [core]
-	excludesfile = /Users/shad/.gitignore_global
+	excludesfile = ~/.gitignore_global
+	pager = less -FMRiX
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path = 
@@ -17,3 +18,5 @@
 	clean = git-lfs clean %f
 	smudge = git-lfs smudge %f
 	required = true
+[alias]
+	dag = log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) -%C(auto)%d%C(reset) %C(bold white)%s%C(reset)%n          %C(dim white)%an%C(reset) <%ae> -%C(reset) %C(cyan)%aD%C(reset) %C(green)(%ar)%C(reset)' --all
