@@ -1,3 +1,6 @@
+" Enable Pathogen plugin manager
+execute pathogen#infect()
+
 syntax on                       " Syntax highlighting
 filetype plugin indent on       " Automatically detect file types.
 scriptencoding utf-8
@@ -28,7 +31,7 @@ set scrolljump=5                " Lines to scroll when cursor leaves screen
 set scrolloff=3                 " Minimum lines to keep above and below cursor
 
 " Highlight problematic whitespace
-set listchars=tab:▸\ ,eol:¬,trail:•,extends:#,nbsp:. 
+set listchars=tab:▸\ ,eol:¬,trail:•,extends:#,nbsp:.
 
 set autoindent                  " Indent at the same level of the previous line
 set shiftwidth=4                " Use indents of 4 spaces

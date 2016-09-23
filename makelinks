@@ -2,6 +2,9 @@
 
 # vim
 ln -sfv "$DOTFILES_DIR/.vimrc" ~
+ln -sfv "$DOTFILES_DIR/.vim" ~
+mkdir -p "$HOME/.vim/autoload"
+ln -sfv "$DOTFILES_DIR/vim-pathogen/autoload/pathogen.vim" "$HOME/.vim/autoload"
 
 # screen
 ln -sfv "$DOTFILES_DIR/.screenrc" ~
