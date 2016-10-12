@@ -45,7 +45,10 @@ set splitbelow                  " Puts new split windows to the bottom of the cu
 set pastetoggle=<F12>           " pastetoggle (sane indentation on pastes)
 
 " Shortcut to rapidly toggle `set list`
-nmap <leader>l :set list!<CR>
+nmap <Leader>l :set list!<CR>
+
+" Enable single leader for EasyMotion
+map <Leader> <Plug>(easymotion-prefix)
 
 " Wrapped lines goes down/up to next row, rather than next line in file.
 noremap j gj
