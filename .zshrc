@@ -1,3 +1,6 @@
+# Disable Oh My Zsh auto update
+DISABLE_AUTO_UPDATE=true
+
 # Source shared aliases
 source ~/.sharedrc
 
