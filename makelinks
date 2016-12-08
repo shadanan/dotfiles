@@ -17,6 +17,7 @@ ln -sfv "$DOTFILES_DIR/.profile" ~
 ln -sfv "$DOTFILES_DIR/.zshrc" ~
 ln -sfv "$DOTFILES_DIR/.zsh-git-prompt" ~
 ln -sfv "$DOTFILES_DIR/.oh-my-zsh" ~
+ln -sfv "$DOTFILES_DIR/.iterm2_shell_integration.zsh" ~
 mkdir -p "$HOME/.oh-my-zsh/custom/plugins"
 ln -sfv "$DOTFILES_DIR/zsh-syntax-highlighting" "$HOME/.oh-my-zsh/custom/plugins"
 mkdir -p "$HOME/.oh-my-zsh/custom/themes"
