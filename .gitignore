@@ -1,2 +1,4 @@
 .vim/.netrwhist
 .vim/autoload
+.iterm2_shell_integration.bash
+.iterm2_shell_integration.zsh

@@ -27,6 +27,7 @@ ln -sfv "$DOTFILES_DIR/shad-zsh-theme/shad.zsh-theme" "$HOME/.oh-my-zsh/custom/t
 ln -sfv "$DOTFILES_DIR/.bashrc" ~
 ln -sfv "$DOTFILES_DIR/.bash_profile" ~
 ln -sfv "$DOTFILES_DIR/.bash-git-prompt" ~
+ln -sfv "$DOTFILES_DIR/.iterm2_shell_integration.bash" ~
 
 # git
 ln -sfv "$DOTFILES_DIR/.gitconfig" ~
