@@ -33,3 +33,6 @@
 [submodule ".vim/bundle/vim-bracketed-paste"]
 	path = .vim/bundle/vim-bracketed-paste
 	url = https://github.com/ConradIrwin/vim-bracketed-paste
+[submodule "rmate"]
+	path = rmate
+	url = https://github.com/aurora/rmate.git
