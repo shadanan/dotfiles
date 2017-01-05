@@ -1,0 +1,75 @@
+#!/usr/bin/env python
+import os
+import sys
+import time
+import glob
+import signal
+import argparse
+import subprocess
+
+
+def command_exists(cmd):
+    return any(os.access(os.path.join(path, cmd), os.X_OK) for path in os.environ["PATH"].split(os.pathsep))
+
+
+class AutoTail(object):
+    def __init__(self):
+        self.running = True
+        self.tail_proc = None
+
+        def handler(signum, frame):
+            self.running = False
+            if self.tail_proc is not None:
+                self.tail_proc.terminate()
+
+        signal.signal(signal.SIGINT, handler)
+
+    def __call__(self, target, pattern):
+        while self.running:
+            files = sorted([f for f in glob.glob(pattern) if not os.path.islink(f)])
+            if len(files) == 0:
+                print("autotail: no files matched '{}' - retry in 5 seconds...".format(pattern))
+                time.sleep(5)
+                continue
+            source = files[-1]
+
+            if os.path.islink(target) and os.readlink(target) != source:
+                os.unlink(target)
+
+            if not os.path.exists(target) and not os.path.islink(target):
+                print("autotail: symlink {} to {}".format(source, target))
+                os.symlink(source, target)
+
+            if self.tail_proc is None:
+                self.tail_proc = subprocess.Popen(['tail', '-F', target])
+
+            subprocess.call(['inotifywait', '-e', 'attrib,close_write,move,create,delete', '.'],
+                            stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+
+
+def main():
+    parser = argparse.ArgumentParser(description='Symlink and tail the latest file matching a GLOB pattern.')
+    parser.add_argument('target', help='target symlink')
+    parser.add_argument('-g', '--glob', help='the glob pattern (default: [target].*)')
+
+    args = parser.parse_args()
+    target_dir, target = os.path.split(args.target)
+    pattern_dir, pattern = os.path.split(args.glob if args.glob is not None else "{}.*".format(args.target))
+
+    if target_dir != pattern_dir:
+        print("autotail: target: {} and glob pattern: {} must have same parent".format(target_dir, pattern_dir))
+        sys.exit(1)
+
+    if not command_exists('inotifywait'):
+        print("autotail: could not find 'inotifywait' on path")
+        sys.exit(2)
+
+    if target_dir:
+        os.chdir(target_dir)
+
+    autotail = AutoTail()
+    autotail(target, pattern)
+
+
+if __name__ == '__main__':
+    main()
