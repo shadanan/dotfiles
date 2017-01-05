@@ -19,25 +19,37 @@ class AutoTail(object):
 
         def handler(signum, frame):
             self.running = False
-            if self.tail_proc is not None:
-                self.tail_proc.terminate()
+            self.kill_tail()
 
         signal.signal(signal.SIGINT, handler)
 
+    def kill_tail(self):
+        if self.tail_proc is not None:
+            self.tail_proc.terminate()
+            self.tail_proc = None
+
     def __call__(self, target, pattern):
+        waiting = False
+
         while self.running:
             files = sorted([f for f in glob.glob(pattern) if not os.path.islink(f)])
-            if len(files) == 0:
-                print("autotail: no files matched '{}' - retry in 5 seconds...".format(pattern))
-                time.sleep(5)
-                continue
-            source = files[-1]
+            source = files[-1] if len(files) > 0 else None
 
             if os.path.islink(target) and os.readlink(target) != source:
                 os.unlink(target)
 
+            if source is None:
+                if not waiting:
+                    print("autotail: no files matched `{}'".format(pattern))
+                waiting = True
+                self.kill_tail()
+                time.sleep(1)
+                continue
+
+            waiting = False
+
             if not os.path.exists(target) and not os.path.islink(target):
-                print("autotail: symlink {} to {}".format(source, target))
+                print("autotail: symlink `{}' to `{}'".format(source, target))
                 os.symlink(source, target)
 
             if self.tail_proc is None:
