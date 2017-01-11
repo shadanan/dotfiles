@@ -12,8 +12,17 @@ def command_exists(cmd):
     return any(os.access(os.path.join(path, cmd), os.X_OK) for path in os.environ["PATH"].split(os.pathsep))
 
 
+def log(msg):
+    sys.stderr.write("autotail: {}\n".format(msg))
+
+
 class AutoTail(object):
-    def __init__(self):
+    def __init__(self, target_dir):
+        if target_dir:
+            self.target_dir = target_dir
+        else:
+            self.target_dir = os.getcwd()
+
         self.running = True
         self.tail_proc = None
 
@@ -32,24 +41,35 @@ class AutoTail(object):
         waiting = False
 
         while self.running:
-            files = sorted([f for f in glob.glob(pattern) if not os.path.islink(f)])
-            source = files[-1] if len(files) > 0 else None
+            source = None
 
-            if os.path.islink(target) and os.readlink(target) != source:
-                os.unlink(target)
+            if os.path.isdir(self.target_dir):
+                if os.getcwd() != self.target_dir:
+                    os.chdir(self.target_dir)
+
+                files = sorted([f for f in glob.glob(pattern) if not os.path.islink(f)])
+                if len(files) > 0:
+                    source = files[-1]
+
+                if os.path.islink(target) and os.readlink(target) != source:
+                    os.unlink(target)
 
             if source is None:
-                if not waiting:
-                    print("autotail: no files matched `{}'".format(pattern))
+                if waiting:
+                    sys.stderr.write('.')
+                else:
+                    log("no files matched `{}'".format(pattern))
                 waiting = True
                 self.kill_tail()
                 time.sleep(1)
                 continue
 
-            waiting = False
+            if waiting:
+                sys.stderr.write('\n')
+                waiting = False
 
             if not os.path.exists(target) and not os.path.islink(target):
-                print("autotail: symlink `{}' to `{}'".format(source, target))
+                log("symlink `{}' to `{}'".format(source, target))
                 os.symlink(source, target)
 
             if self.tail_proc is None:
@@ -62,24 +82,21 @@ class AutoTail(object):
 def main():
     parser = argparse.ArgumentParser(description='Symlink and tail the latest file matching a GLOB pattern.')
     parser.add_argument('target', help='target symlink')
-    parser.add_argument('-g', '--glob', help='the glob pattern (default: [target].*)')
+    parser.add_argument('-g', '--glob', help='the glob pattern (default: [target]*)')
 
     args = parser.parse_args()
     target_dir, target = os.path.split(args.target)
-    pattern_dir, pattern = os.path.split(args.glob if args.glob is not None else "{}.*".format(args.target))
+    pattern_dir, pattern = os.path.split(args.glob if args.glob is not None else "{}*".format(args.target))
 
     if target_dir != pattern_dir:
-        print("autotail: target: {} and glob pattern: {} must have same parent".format(target_dir, pattern_dir))
+        log("target: {} and glob pattern: {} must have same parent".format(target_dir, pattern_dir))
         sys.exit(1)
 
     if not command_exists('inotifywait'):
-        print("autotail: could not find 'inotifywait' on path")
+        log("could not find 'inotifywait' on path")
         sys.exit(2)
 
-    if target_dir:
-        os.chdir(target_dir)
-
-    autotail = AutoTail()
+    autotail = AutoTail(target_dir)
     autotail(target, pattern)
 
 
