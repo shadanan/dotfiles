@@ -19,7 +19,7 @@ def log(msg):
 class AutoTail(object):
     def __init__(self, target_dir):
         if target_dir:
-            self.target_dir = target_dir
+            self.target_dir = os.path.abspath(target_dir)
         else:
             self.target_dir = os.getcwd()
 
@@ -44,8 +44,7 @@ class AutoTail(object):
             source = None
 
             if os.path.isdir(self.target_dir):
-                if os.getcwd() != self.target_dir:
-                    os.chdir(self.target_dir)
+                os.chdir(self.target_dir)
 
                 files = sorted([f for f in glob.glob(pattern) if not os.path.islink(f)])
                 if len(files) > 0:
