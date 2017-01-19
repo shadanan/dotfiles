@@ -7,9 +7,7 @@ fi
 
 GIT_MAJOR_VERSION=$(git --version | cut -d' ' -f3 | cut -d'.' -f1)
 
-export DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-
-pushd $DOTFILES_DIR
+pushd $( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 git pull origin master
 git submodule init
 

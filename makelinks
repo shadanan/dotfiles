@@ -1,37 +1,39 @@
 #!/bin/bash
 
+DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
 # vim
-ln -sfv "$DOTFILES_DIR/.vimrc" ~
-ln -sfv "$DOTFILES_DIR/.vim" ~
+ln -sfv "$DOTFILES_DIR/.vimrc" "$HOME"
+ln -sfv "$DOTFILES_DIR/.vim" "$HOME"
 mkdir -p "$HOME/.vim/autoload"
 ln -sfv "$DOTFILES_DIR/vim-pathogen/autoload/pathogen.vim" "$HOME/.vim/autoload"
 
 # screen
-ln -sfv "$DOTFILES_DIR/.screenrc" ~
+ln -sfv "$DOTFILES_DIR/.screenrc" "$HOME"
 
 # shell
-ln -sfv "$DOTFILES_DIR/.sharedrc" ~
-ln -sfv "$DOTFILES_DIR/.profile" ~
+ln -sfv "$DOTFILES_DIR/.sharedrc" "$HOME"
+ln -sfv "$DOTFILES_DIR/.profile" "$HOME"
 
 # zsh
-ln -sfv "$DOTFILES_DIR/.zshrc" ~
-ln -sfv "$DOTFILES_DIR/.zsh-git-prompt" ~
-ln -sfv "$DOTFILES_DIR/.oh-my-zsh" ~
-ln -sfv "$DOTFILES_DIR/.iterm2_shell_integration.zsh" ~
+ln -sfv "$DOTFILES_DIR/.zshrc" "$HOME"
+ln -sfv "$DOTFILES_DIR/.zsh-git-prompt" "$HOME"
+ln -sfv "$DOTFILES_DIR/.oh-my-zsh" "$HOME"
+ln -sfv "$DOTFILES_DIR/.iterm2_shell_integration.zsh" "$HOME"
 mkdir -p "$HOME/.oh-my-zsh/custom/plugins"
 ln -sfv "$DOTFILES_DIR/zsh-syntax-highlighting" "$HOME/.oh-my-zsh/custom/plugins"
 mkdir -p "$HOME/.oh-my-zsh/custom/themes"
 ln -sfv "$DOTFILES_DIR/shad-zsh-theme/shad.zsh-theme" "$HOME/.oh-my-zsh/custom/themes"
 
 # bash
-ln -sfv "$DOTFILES_DIR/.bashrc" ~
-ln -sfv "$DOTFILES_DIR/.bash_profile" ~
-ln -sfv "$DOTFILES_DIR/.bash-git-prompt" ~
-ln -sfv "$DOTFILES_DIR/.iterm2_shell_integration.bash" ~
+ln -sfv "$DOTFILES_DIR/.bashrc" "$HOME"
+ln -sfv "$DOTFILES_DIR/.bash_profile" "$HOME"
+ln -sfv "$DOTFILES_DIR/.bash-git-prompt" "$HOME"
+ln -sfv "$DOTFILES_DIR/.iterm2_shell_integration.bash" "$HOME"
 
 # git
-ln -sfv "$DOTFILES_DIR/.gitconfig" ~
-ln -sfv "$DOTFILES_DIR/.gitignore_global" ~
+ln -sfv "$DOTFILES_DIR/.gitconfig" "$HOME"
+ln -sfv "$DOTFILES_DIR/.gitignore_global" "$HOME"
 
 # bin
 mkdir -p "$HOME/.local/bin"
