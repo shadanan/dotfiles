@@ -38,3 +38,4 @@ ln -sfv "$DOTFILES_DIR/.gitignore_global" "$HOME"
 # bin
 mkdir -p "$HOME/.local/bin"
 ln -sfv "$DOTFILES_DIR/rmate/rmate" "$HOME/.local/bin/rmate"
+ln -sfv "$DOTFILES_DIR/.local/bin/autotail" "$HOME/.local/bin/autotail"
