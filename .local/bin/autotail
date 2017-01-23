@@ -13,7 +13,7 @@ def command_exists(cmd):
 
 
 def log(msg):
-    sys.stderr.write("autotail: {}\n".format(msg))
+    sys.stderr.write("autotail: %s\n" % msg)
 
 
 class AutoTail(object):
@@ -57,7 +57,7 @@ class AutoTail(object):
                 if waiting:
                     sys.stderr.write('.')
                 else:
-                    log("no files matched `{}'".format(pattern))
+                    log("no files matched `%s'" % pattern)
                 waiting = True
                 self.kill_tail()
                 time.sleep(1)
@@ -85,10 +85,10 @@ def main():
 
     args = parser.parse_args()
     target_dir, target = os.path.split(args.target)
-    pattern_dir, pattern = os.path.split(args.glob if args.glob is not None else "{}*".format(args.target))
+    pattern_dir, pattern = os.path.split(args.glob if args.glob is not None else "%s*" % args.target)
 
     if target_dir != pattern_dir:
-        log("target: {} and glob pattern: {} must have same parent".format(target_dir, pattern_dir))
+        log("target: %s and glob pattern: %s must have same parent" % (target_dir, pattern_dir))
         sys.exit(1)
 
     if not command_exists('inotifywait'):
