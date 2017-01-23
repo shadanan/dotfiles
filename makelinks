@@ -4,9 +4,11 @@ DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 # vim
 ln -sfvh "$DOTFILES_DIR/.vimrc" "$HOME"
-ln -sfvh "$DOTFILES_DIR/.vim" "$HOME"
 mkdir -p "$HOME/.vim/autoload"
 ln -sfvh "$DOTFILES_DIR/vim-pathogen-master/autoload/pathogen.vim" "$HOME/.vim/autoload/pathogen.vim"
+mkdir -p "$HOME/.vim/bundle"
+ln -sfvh "$DOTFILES_DIR/vim-bracketed-paste-master" "$HOME/.vim/bundle/vim-bracketed-paste"
+ln -sfvh "$DOTFILES_DIR/vim-easymotion-master" "$HOME/.vim/bundle/vim-easymotion"
 
 # screen
 ln -sfvh "$DOTFILES_DIR/.screenrc" "$HOME"
