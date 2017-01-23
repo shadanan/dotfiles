@@ -3,39 +3,39 @@
 DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 # vim
-ln -sfv "$DOTFILES_DIR/.vimrc" "$HOME"
-ln -sfv "$DOTFILES_DIR/.vim" "$HOME"
+ln -sfvh "$DOTFILES_DIR/.vimrc" "$HOME"
+ln -sfvh "$DOTFILES_DIR/.vim" "$HOME"
 mkdir -p "$HOME/.vim/autoload"
-ln -sfv "$DOTFILES_DIR/vim-pathogen/autoload/pathogen.vim" "$HOME/.vim/autoload"
+ln -sfvh "$DOTFILES_DIR/vim-pathogen-master/autoload/pathogen.vim" "$HOME/.vim/autoload/pathogen.vim"
 
 # screen
-ln -sfv "$DOTFILES_DIR/.screenrc" "$HOME"
+ln -sfvh "$DOTFILES_DIR/.screenrc" "$HOME"
 
 # shell
-ln -sfv "$DOTFILES_DIR/.sharedrc" "$HOME"
-ln -sfv "$DOTFILES_DIR/.profile" "$HOME"
+ln -sfvh "$DOTFILES_DIR/.sharedrc" "$HOME"
+ln -sfvh "$DOTFILES_DIR/.profile" "$HOME"
 
 # zsh
-ln -sfv "$DOTFILES_DIR/.zshrc" "$HOME"
-ln -sfv "$DOTFILES_DIR/.zsh-git-prompt" "$HOME"
-ln -sfv "$DOTFILES_DIR/.oh-my-zsh" "$HOME"
-ln -sfv "$DOTFILES_DIR/.iterm2_shell_integration.zsh" "$HOME"
+ln -sfvh "$DOTFILES_DIR/.zshrc" "$HOME"
+ln -sfvh "$DOTFILES_DIR/zsh-git-prompt-master" "$HOME/.zsh-git-prompt"
+ln -sfvh "$DOTFILES_DIR/oh-my-zsh-master" "$HOME/.oh-my-zsh"
+ln -sfvh "$DOTFILES_DIR/.iterm2_shell_integration.zsh" "$HOME"
 mkdir -p "$HOME/.oh-my-zsh/custom/plugins"
-ln -sfv "$DOTFILES_DIR/zsh-syntax-highlighting" "$HOME/.oh-my-zsh/custom/plugins"
+ln -sfvh "$DOTFILES_DIR/zsh-syntax-highlighting-master" "$HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting"
 mkdir -p "$HOME/.oh-my-zsh/custom/themes"
-ln -sfv "$DOTFILES_DIR/shad-zsh-theme/shad.zsh-theme" "$HOME/.oh-my-zsh/custom/themes"
+ln -sfvh "$DOTFILES_DIR/shad.zsh-theme" "$HOME/.oh-my-zsh/custom/themes"
 
 # bash
-ln -sfv "$DOTFILES_DIR/.bashrc" "$HOME"
-ln -sfv "$DOTFILES_DIR/.bash_profile" "$HOME"
-ln -sfv "$DOTFILES_DIR/.bash-git-prompt" "$HOME"
-ln -sfv "$DOTFILES_DIR/.iterm2_shell_integration.bash" "$HOME"
+ln -sfvh "$DOTFILES_DIR/.bashrc" "$HOME"
+ln -sfvh "$DOTFILES_DIR/.bash_profile" "$HOME"
+ln -sfvh "$DOTFILES_DIR/bash-git-prompt-master" "$HOME/.bash-git-prompt"
+ln -sfvh "$DOTFILES_DIR/.iterm2_shell_integration.bash" "$HOME"
 
 # git
-ln -sfv "$DOTFILES_DIR/.gitconfig" "$HOME"
-ln -sfv "$DOTFILES_DIR/.gitignore_global" "$HOME"
+ln -sfvh "$DOTFILES_DIR/.gitconfig" "$HOME"
+ln -sfvh "$DOTFILES_DIR/.gitignore_global" "$HOME"
 
 # bin
 mkdir -p "$HOME/.local/bin"
-ln -sfv "$DOTFILES_DIR/rmate/rmate" "$HOME/.local/bin/rmate"
-ln -sfv "$DOTFILES_DIR/.local/bin/autotail" "$HOME/.local/bin/autotail"
+ln -sfvh "$DOTFILES_DIR/rmate-master/rmate" "$HOME/.local/bin/rmate"
+ln -sfvh "$DOTFILES_DIR/.local/bin/autotail" "$HOME/.local/bin/autotail"
