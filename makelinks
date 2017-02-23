@@ -46,3 +46,7 @@ symlink "$DOTFILES_DIR/.gitignore_global" "$HOME/.gitignore_global"
 mkdir -p "$HOME/.local/bin"
 symlink "$DOTFILES_DIR/rmate-master/rmate" "$HOME/.local/bin/rmate"
 symlink "$DOTFILES_DIR/.local/bin/autotail" "$HOME/.local/bin/autotail"
+
+# jupyter
+mkdir -p "$HOME/.jupyter/custom"
+symlink "$DOTFILES_DIR/.jupyter/custom/custom.js" "$HOME/.jupyter/custom/custom.js"
