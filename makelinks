@@ -50,3 +50,4 @@ symlink "$DOTFILES_DIR/.local/bin/autotail" "$HOME/.local/bin/autotail"
 # jupyter
 mkdir -p "$HOME/.jupyter/custom"
 symlink "$DOTFILES_DIR/.jupyter/custom/custom.js" "$HOME/.jupyter/custom/custom.js"
+symlink "$DOTFILES_DIR/.jupyter/custom/custom.css" "$HOME/.jupyter/custom/custom.css"
