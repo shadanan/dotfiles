@@ -23,3 +23,5 @@
 [amazon]
 	append-cr-url = true
 	pull-request-by-default = true
+[pull]
+	rebase = true
