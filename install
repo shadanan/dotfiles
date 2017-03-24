@@ -19,6 +19,7 @@ install_from_github "magicmonty/bash-git-prompt"
 install_from_github "tpope/vim-pathogen"
 install_from_github "easymotion/vim-easymotion"
 install_from_github "ConradIrwin/vim-bracketed-paste"
+install_from_github "bmfurtado/iterm2-cssh"
 
 echo "Downloading https://iterm2.com/misc/bash_startup.in"
 curl -# -L https://iterm2.com/misc/bash_startup.in -o .iterm2_shell_integration.bash

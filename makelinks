@@ -41,6 +41,7 @@ mkdir -p "$HOME/.iterm2"
 symlink "$DOTFILES_DIR/.iterm2/com.googlecode.iterm2.plist" "$HOME/.iterm2/com.googlecode.iterm2.plist"
 symlink "$DOTFILES_DIR/.iterm2_shell_integration.zsh" "$HOME/.iterm2_shell_integration.zsh"
 symlink "$DOTFILES_DIR/.iterm2_shell_integration.bash" "$HOME/.iterm2_shell_integration.bash"
+symlink "$DOTFILES_DIR/iterm2-cssh-master/cssh.applescript" "$HOME/.local/bin/iterm2-cssh"
 
 # git
 symlink "$DOTFILES_DIR/.gitconfig" "$HOME/.gitconfig"
