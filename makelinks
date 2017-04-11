@@ -41,7 +41,6 @@ mkdir -p "$HOME/.iterm2"
 symlink "$DOTFILES_DIR/.iterm2/com.googlecode.iterm2.plist" "$HOME/.iterm2/com.googlecode.iterm2.plist"
 symlink "$DOTFILES_DIR/.iterm2_shell_integration.zsh" "$HOME/.iterm2_shell_integration.zsh"
 symlink "$DOTFILES_DIR/.iterm2_shell_integration.bash" "$HOME/.iterm2_shell_integration.bash"
-symlink "$DOTFILES_DIR/iterm2-cssh-master/cssh.applescript" "$HOME/.local/bin/iterm2-cssh"
 
 # git
 symlink "$DOTFILES_DIR/.gitconfig" "$HOME/.gitconfig"
@@ -52,6 +51,7 @@ mkdir -p "$HOME/.local/bin"
 symlink "$DOTFILES_DIR/rmate-master/rmate" "$HOME/.local/bin/rmate"
 symlink "$DOTFILES_DIR/.local/bin/autotail" "$HOME/.local/bin/autotail"
 symlink "$DOTFILES_DIR/.local/bin/autoln" "$HOME/.local/bin/autoln"
+symlink "$DOTFILES_DIR/iterm2-cssh-master/cssh.applescript" "$HOME/.local/bin/iterm2-cssh"
 
 # jupyter
 mkdir -p "$HOME/.jupyter/custom"
