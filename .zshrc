@@ -18,7 +18,11 @@ export ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="shad"
 
 # Set oh-my-zsh plugins
-plugins=(z zsh-syntax-highlighting)
+plugins=(z)
+
+if [ $(zsh --version | cut -d' ' -f2 | cut -d'.' -f1) -gt "4" ]; then
+	plugins+=(zsh-syntax-highlighting)
+fi
 
 # Activate oh-my-zsh
 source $ZSH/oh-my-zsh.sh
