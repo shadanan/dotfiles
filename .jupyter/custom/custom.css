@@ -1,4 +1,9 @@
 /* Make the notebook cells take almost all available width */
 .container {
     width: 99% !important;
-}   
+}
+
+/* Make last input box scrollable to top */
+.end_space {
+    height: calc(100vh - 175px);
+}
