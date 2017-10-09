@@ -39,8 +39,6 @@ symlink "$DOTFILES_DIR/bash-git-prompt-master" "$HOME/.bash-git-prompt"
 # iterm2
 mkdir -p "$HOME/.iterm2"
 symlink "$DOTFILES_DIR/.iterm2/com.googlecode.iterm2.plist" "$HOME/.iterm2/com.googlecode.iterm2.plist"
-symlink "$DOTFILES_DIR/.iterm2_shell_integration.zsh" "$HOME/.iterm2_shell_integration.zsh"
-symlink "$DOTFILES_DIR/.iterm2_shell_integration.bash" "$HOME/.iterm2_shell_integration.bash"
 
 # git
 symlink "$DOTFILES_DIR/.gitconfig" "$HOME/.gitconfig"
