@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 if [ -d "$HOME/.local/bin" ]; then
 	export PATH="$HOME/.local/bin:$PATH"
@@ -14,10 +14,6 @@ fi
 
 if [ -f /usr/libexec/java_home ]; then
 	export JAVA_HOME=`/usr/libexec/java_home`
-fi
-
-if [ -f "$HOME/.sharedenv" ]; then
-	source "$HOME/.sharedenv"
 fi
 
 # Less Colors
