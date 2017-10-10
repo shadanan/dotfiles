@@ -1,9 +1,10 @@
 # Disable Oh My Zsh auto update
 DISABLE_AUTO_UPDATE=true
 
-# Source shared aliases
+# Source shared environment
 source ~/.sharedrc
 
+# Source local zsh environment
 if [ -f "$HOME/.zshenv" ]; then
 	source "$HOME/.zshenv"
 fi
@@ -38,6 +39,7 @@ export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 if which pyenv > /dev/null 2>&1; then eval "$(pyenv init -)"; fi
 if which pyenv-virtualenv-init > /dev/null 2>&1; then eval "$(pyenv virtualenv-init -)"; fi
 
+# Source local shared environment
 if [ -f "$HOME/.sharedenv" ]; then
 	source "$HOME/.sharedenv"
 fi

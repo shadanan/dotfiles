@@ -19,3 +19,6 @@ fi
 # Less Colors
 export LESS_TERMCAP_se=$'\E[0m'
 export LESS_TERMCAP_so=$'\E[01;33;03;40m'
+
+# Default Editor
+export EDITOR=$(which vim)
