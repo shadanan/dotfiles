@@ -5,5 +5,5 @@
 
 /* Make last input box scrollable to top */
 .end_space {
-    height: calc(100vh - 175px);
+    height: 50vh;
 }
