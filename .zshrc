@@ -4,11 +4,6 @@ DISABLE_AUTO_UPDATE=true
 # Source shared environment
 source ~/.sharedrc
 
-# Source local zsh environment
-if [ -f "$HOME/.zshenv" ]; then
-	source "$HOME/.zshenv"
-fi
-
 # Activate shad's zsh git prompt
 source "$HOME/.zsh-git-prompt/zshrc.sh"
 
@@ -42,4 +37,9 @@ if which pyenv-virtualenv-init > /dev/null 2>&1; then eval "$(pyenv virtualenv-i
 # Source local shared environment
 if [ -f "$HOME/.sharedenv" ]; then
 	source "$HOME/.sharedenv"
+fi
+
+# Source local zsh environment
+if [ -f "$HOME/.zshenv" ]; then
+	source "$HOME/.zshenv"
 fi

@@ -3,11 +3,6 @@
 # Source shared environment
 source ~/.sharedrc
 
-# Source local bash environment
-if [ -f "$HOME/.bashenv" ]; then
-	source "$HOME/.bashenv"
-fi
-
 # Source global bash environment
 if [ -f /etc/bashrc ]; then
 	. /etc/bashrc
@@ -55,4 +50,9 @@ GIT_PROMPT_END="\n$Green\D{%F %T}$ResetColor [$BoldYellow\!$ResetColor] $ "
 # Source local shared environment
 if [ -f "$HOME/.sharedenv" ]; then
 	source "$HOME/.sharedenv"
+fi
+
+# Source local bash environment
+if [ -f "$HOME/.bashenv" ]; then
+	source "$HOME/.bashenv"
 fi
