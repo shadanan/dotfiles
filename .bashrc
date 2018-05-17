@@ -47,6 +47,9 @@ GIT_PROMPT_START="$Magenta\u$ResetColor@$Yellow\h$ResetColor:$BoldBlue\w$ResetCo
 GIT_PROMPT_END="\n$Green\D{%F %T}$ResetColor [$BoldYellow\!$ResetColor] $ "
 . "$__GIT_PROMPT_DIR/gitprompt.sh"
 
+# Enable command-line fuzzy finder (https://github.com/junegunn/fzf)
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
 # Source local shared environment
 if [ -f "$HOME/.sharedenv" ]; then
 	source "$HOME/.sharedenv"
