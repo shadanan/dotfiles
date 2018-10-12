@@ -14,13 +14,13 @@ function prompt_char {
 	if [ $UID -eq 0 ]; then echo "%{$fg[red]%}#%{$reset_color%}"; else echo $; fi
 }
 
-function pyenv_status {
-	if hash pyenv 2> /dev/null; then
-		echo "%{$fg[red]%}$(pyenv version-name)%{$reset_color%}|"
-	else
+function venv_status {
+	if [ -z "$VIRTUAL_ENV" ]; then
 		echo ''
+	else
+		echo "%{$fg[red]%}${VIRTUAL_ENV##*/}%{$reset_color%}|"
 	fi
 }
 
 PROMPT='%{$fg[magenta]%}%n%{$reset_color%}@%{$fg[yellow]%}%m%{$reset_color%}:%{$fg_bold[blue]%}%~%{$reset_color%} $(git_super_status)
-%{$fg[green]%}%D{%Y-%m-%d %H:%M:%S}%{$reset_color%} [$(pyenv_status)%{%B%F{yellow}%}%!%{%f%k%b%}] %_$(prompt_char) '
+%{$fg[green]%}%D{%Y-%m-%d %H:%M:%S}%{$reset_color%} [$(venv_status)%{%B%F{yellow}%}%!%{%f%k%b%}] %_$(prompt_char) '

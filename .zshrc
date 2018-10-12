@@ -28,11 +28,8 @@ autoload -U edit-command-line
 zle -N edit-command-line
 bindkey '^x^e' edit-command-line
 
-# Configure pyenv
-export PYENV_ROOT=/usr/local/var/pyenv
-export PYENV_VIRTUALENV_DISABLE_PROMPT=1
-if which pyenv > /dev/null 2>&1; then eval "$(pyenv init -)"; fi
-if which pyenv-virtualenv-init > /dev/null 2>&1; then eval "$(pyenv virtualenv-init -)"; fi
+# Configure venv
+export VIRTUAL_ENV_DISABLE_PROMPT=0
 
 # Enable command-line fuzzy finder (https://github.com/junegunn/fzf)
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
