@@ -55,7 +55,3 @@ symlink "$DOTFILES_DIR/iterm2-cssh-master/cssh.applescript" "$HOME/.local/bin/it
 mkdir -p "$HOME/.jupyter/custom"
 symlink "$DOTFILES_DIR/.jupyter/custom/custom.js" "$HOME/.jupyter/custom/custom.js"
 symlink "$DOTFILES_DIR/.jupyter/custom/custom.css" "$HOME/.jupyter/custom/custom.css"
-
-# fzf
-symlink "$DOTFILES_DIR/.fzf.bash" "$HOME/.fzf.bash"
-symlink "$DOTFILES_DIR/.fzf.zsh" "$HOME/.fzf.zsh"

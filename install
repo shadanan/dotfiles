@@ -25,6 +25,6 @@ install_from_github "bmfurtado/iterm2-cssh"
 
 # Command Line Fuzzy Finder
 install_from_github "junegunn/fzf"
-fzf-master/install --bin
+fzf-master/install --all --no-update-rc
 
 popd
