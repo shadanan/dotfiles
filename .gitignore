@@ -1,12 +1,4 @@
 .iterm2_shell_integration.bash
 .iterm2_shell_integration.zsh
 *.zip
-bash-git-prompt-master
-oh-my-zsh-master
-rmate-master
-vim-pathogen-master
-vim-bracketed-paste-master
-vim-easymotion-master
-zsh-git-prompt-master
-zsh-syntax-highlighting-master
-iterm2-cssh-master
+*-master
