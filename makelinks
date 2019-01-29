@@ -37,8 +37,7 @@ symlink "$DOTFILES_DIR/.bash_profile" "$HOME/.bash_profile"
 symlink "$DOTFILES_DIR/bash-git-prompt-master" "$HOME/.bash-git-prompt"
 
 # iterm2
-mkdir -p "$HOME/.iterm2"
-symlink "$DOTFILES_DIR/.iterm2/com.googlecode.iterm2.plist" "$HOME/.iterm2/com.googlecode.iterm2.plist"
+symlink "$DOTFILES_DIR/.iterm2" "$HOME/.iterm2"
 
 # git
 symlink "$DOTFILES_DIR/.gitconfig" "$HOME/.gitconfig"
