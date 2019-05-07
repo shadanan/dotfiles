@@ -390,17 +390,19 @@
 	<key>NSWindow Frame SUUpdateAlert</key>
 	<string>495 476 620 392 0 0 1680 1027 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>298 167 796 486 0 0 1680 1027 </string>
+	<string>298 171 796 486 0 0 1680 1027 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>0 440 949 587 0 0 1680 1027 </string>
+	<string>406 256 949 587 0 0 1680 1027 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>530 178 949 587 0 0 1680 1027 </string>
+	<string>35 4 1521 1023 0 0 1680 1050 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
-	<string>304 923 949 587 0 0 3008 1669 </string>
+	<string>258 275 949 587 0 0 1680 1027 </string>
 	<key>NSWindow Frame iTerm Window 3</key>
-	<string>809 0 809 1027 0 0 1680 1027 </string>
+	<string>35 45 1502 979 0 0 1680 1027 </string>
 	<key>NSWindow Frame iTerm Window 4</key>
-	<string>383 1082 949 587 0 0 3008 1669 </string>
+	<string>79 32 1502 979 0 0 1680 1027 </string>
+	<key>NSWindow Frame iTerm Window 5</key>
+	<string>380 440 949 587 0 0 1680 1027 </string>
 	<key>New Bookmarks</key>
 	<array>
 		<dict>
@@ -2726,6 +2728,8 @@
 			<string></string>
 		</dict>
 	</array>
+	<key>NoSyncAutoBurialReveal</key>
+	<true/>
 	<key>NoSyncCommandHistoryHasEverBeenUsed</key>
 	<true/>
 	<key>NoSyncHaveRequestedFullDiskAccess</key>
@@ -2752,6 +2756,8 @@
 	<false/>
 	<key>OpenNoWindowsAtStartup</key>
 	<false/>
+	<key>OpenTmuxWindowsIn</key>
+	<integer>1</integer>
 	<key>PointerActions</key>
 	<dict>
 		<key>Button,1,1,,</key>
