@@ -23,9 +23,6 @@ if [ -z "$HISTFILE" ]; then
 	export HISTFILE="$HOME/.bash_history"
 fi
 
-# User specific aliases and functions
-export GREP_OPTIONS='--color=auto'
-
 unamestr=`uname`
 if [[ "$unamestr" == 'Linux' ]]; then
 	alias ls='ls --color=auto'
