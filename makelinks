@@ -51,6 +51,7 @@ symlink "$DOTFILES_DIR/.local/bin/autoln" "$HOME/.local/bin/autoln"
 symlink "$DOTFILES_DIR/iterm2-cssh-master/cssh.applescript" "$HOME/.local/bin/iterm2-cssh"
 
 # tmux
+mkdir -p "$HOME/.tmux/plugins"
 symlink "$DOTFILES_DIR/.tmux.conf" "$HOME/.tmux.conf"
 
 # jupyter

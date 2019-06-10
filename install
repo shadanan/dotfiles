@@ -27,4 +27,8 @@ install_from_github "bmfurtado/iterm2-cssh"
 install_from_github "junegunn/fzf"
 fzf-master/install --bin
 
+# tmux Plugin Manager
+mkdir -p "$HOME/.tmux/plugins"
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
 popd
