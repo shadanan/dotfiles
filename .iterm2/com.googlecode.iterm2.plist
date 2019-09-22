@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>AllowClipboardAccess</key>
+	<true/>
 	<key>AppleAntiAliasingThreshold</key>
 	<integer>1</integer>
 	<key>AppleScrollAnimationEnabled</key>
@@ -388,19 +390,21 @@
 		<integer>1</integer>
 	</dict>
 	<key>NSWindow Frame SUUpdateAlert</key>
-	<string>495 476 620 392 0 0 1680 1027 </string>
+	<string>492 476 620 392 0 0 1680 1027 </string>
+	<key>NSWindow Frame SessionsPreferences</key>
+	<string>269 126 606 469 0 0 1680 1027 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>298 171 796 486 0 0 1680 1027 </string>
+	<string>280 262 796 486 0 0 1680 1027 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>406 256 949 587 0 0 1680 1027 </string>
+	<string>0 429 949 587 0 0 1680 1027 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>35 4 1521 1023 0 0 1680 1050 </string>
+	<string>582 76 949 587 0 0 1680 1027 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
-	<string>258 275 949 587 0 0 1680 1027 </string>
+	<string>388 214 949 610 0 0 1680 1027 </string>
 	<key>NSWindow Frame iTerm Window 3</key>
-	<string>35 45 1502 979 0 0 1680 1027 </string>
+	<string>0 23 1607 993 0 0 1680 1027 </string>
 	<key>NSWindow Frame iTerm Window 4</key>
-	<string>79 32 1502 979 0 0 1680 1027 </string>
+	<string>169 428 949 587 0 0 1680 1027 </string>
 	<key>NSWindow Frame iTerm Window 5</key>
 	<string>380 440 949 587 0 0 1680 1027 </string>
 	<key>New Bookmarks</key>
@@ -2757,7 +2761,7 @@
 	<key>OpenNoWindowsAtStartup</key>
 	<false/>
 	<key>OpenTmuxWindowsIn</key>
-	<integer>1</integer>
+	<integer>2</integer>
 	<key>PointerActions</key>
 	<dict>
 		<key>Button,1,1,,</key>
@@ -2802,7 +2806,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2018-04-04T21:44:03Z</date>
+	<date>2019-07-03T19:57:05Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>ShowPaneTitles</key>
@@ -2825,6 +2829,6 @@
 	<key>findRegex_iTerm</key>
 	<false/>
 	<key>iTerm Version</key>
-	<string>3.2.7</string>
+	<string>3.2.9</string>
 </dict>
 </plist>
