@@ -7,6 +7,9 @@ symlink() {
   ln -sv $1 $2
 }
 
+# X
+symlink "$DOTFILES_DIR/.Xresources" "$HOME/.Xresources"
+
 # vim
 symlink "$DOTFILES_DIR/.vimrc" "$HOME/.vimrc"
 mkdir -p "$HOME/.vim/autoload"
@@ -53,8 +56,3 @@ symlink "$DOTFILES_DIR/iterm2-cssh-master/cssh.applescript" "$HOME/.local/bin/it
 # tmux
 mkdir -p "$HOME/.tmux/plugins"
 symlink "$DOTFILES_DIR/.tmux.conf" "$HOME/.tmux.conf"
-
-# jupyter
-mkdir -p "$HOME/.jupyter/custom"
-symlink "$DOTFILES_DIR/.jupyter/custom/custom.js" "$HOME/.jupyter/custom/custom.js"
-symlink "$DOTFILES_DIR/.jupyter/custom/custom.css" "$HOME/.jupyter/custom/custom.css"
