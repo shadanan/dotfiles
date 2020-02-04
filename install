@@ -12,6 +12,7 @@ install_from_github() {
 }
 
 install_from_github "robbyrussell/oh-my-zsh"
+install_from_github "ohmyzsh/ohmyzsh"
 install_from_github "shadanan/zsh-git-prompt"
 install_from_github "zsh-users/zsh-syntax-highlighting"
 install_from_github "aurora/rmate"
@@ -29,6 +30,7 @@ fzf-master/install --all
 
 # tmux Plugin Manager
 mkdir -p "$HOME/.tmux/plugins"
+rm -rf ~/.tmux/plugins/tpm
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 popd
