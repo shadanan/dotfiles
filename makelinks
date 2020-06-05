@@ -39,6 +39,9 @@ symlink "$DOTFILES_DIR/.bashrc" "$HOME/.bashrc"
 symlink "$DOTFILES_DIR/.bash_profile" "$HOME/.bash_profile"
 symlink "$DOTFILES_DIR/bash-git-prompt-master" "$HOME/.bash-git-prompt"
 
+# xonsh
+symlink "$DOTFILES_DIR/.xonshrc" "$HOME/.xonshrc"
+
 # iterm2
 symlink "$DOTFILES_DIR/.iterm2" "$HOME/.iterm2"
 

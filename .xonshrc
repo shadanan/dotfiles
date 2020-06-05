@@ -1,0 +1,8 @@
+import datetime
+
+$PROMPT_FIELDS['now'] = datetime.datetime.now
+$PROMPT_FIELDS['env_prefix'] = ''
+$PROMPT_FIELDS['env_postfix'] = ''
+$PROMPT = "{PURPLE}{user}{NO_COLOR}@{YELLOW}{hostname}{NO_COLOR}:{BOLD_BLUE}{cwd}{NO_COLOR}{curr_branch: [{{BOLD_PURPLE}}{}{{NO_COLOR}}]}\n{GREEN}{now}{NO_COLOR}{env_name: [{{PURPLE}}{}{{NO_COLOR}}]} {prompt_end} "
+
+xontrib load vox
