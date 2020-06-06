@@ -2,26 +2,13 @@
 	name = Shad Sharma
 	email = shadanan@gmail.com
 [push]
-	default = current
+    default = current
 [core]
 	excludesfile = ~/.gitignore_global
 	pager = less -FMRiX
-[difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
-[mergetool "sourcetree"]
-	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
 [color]
 	ui = auto
-[filter "lfs"]
-	clean = git-lfs clean %f
-	smudge = git-lfs smudge %f
-	required = true
 [alias]
 	dag = log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) -%C(auto)%d%C(reset) %C(bold white)%s%C(reset)%n          %C(dim white)%an%C(reset) <%ae> -%C(reset) %C(cyan)%aD%C(reset) %C(green)(%ar)%C(reset)' --all
-[amazon]
-	append-cr-url = true
-	pull-request-by-default = true
 [pull]
 	rebase = true
