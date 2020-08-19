@@ -1,8 +1,17 @@
 import datetime
+from prompt_toolkit.keys import Keys
 
-$PROMPT_FIELDS['now'] = datetime.datetime.now
+source-bash --seterrprevcmd "" /etc/profile
+source-bash ~/.sharedrc
+
+$PROMPT_FIELDS['now'] = lambda: datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 $PROMPT_FIELDS['env_prefix'] = ''
 $PROMPT_FIELDS['env_postfix'] = ''
-$PROMPT = "{PURPLE}{user}{NO_COLOR}@{YELLOW}{hostname}{NO_COLOR}:{BOLD_BLUE}{cwd}{NO_COLOR}{curr_branch: [{{BOLD_PURPLE}}{}{{NO_COLOR}}]}\n{GREEN}{now}{NO_COLOR}{env_name: [{{PURPLE}}{}{{NO_COLOR}}]} {prompt_end} "
+$PROMPT = '''{PURPLE}{user}{NO_COLOR}@{YELLOW}{hostname}{NO_COLOR}:{BOLD_BLUE}{cwd}{NO_COLOR}{curr_branch: [{{BOLD_PURPLE}}{}{{NO_COLOR}}]}
+{GREEN}{now}{NO_COLOR}{env_name: [{{PURPLE}}{}{{NO_COLOR}}]} {prompt_end} '''
+
+$fzf_history_binding = Keys.ControlR
+$fzf_ssh_binding = Keys.ControlS
 
 xontrib load vox
+xontrib load fzf-widgets
