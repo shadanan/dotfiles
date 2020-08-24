@@ -12,6 +12,11 @@ if [ -d "$HOME/.local/lib/python" ]; then
 	export PYTHONPATH="$HOME/.local/lib/python:$PYTHONPATH"
 fi
 
+if [ -x "$(command -v go)" ]; then
+    export GOPATH=$(go env GOPATH)
+    export PATH=$PATH:$GOPATH/bin
+fi
+
 if [ -f /usr/libexec/java_home ]; then
 	export JAVA_HOME=`/usr/libexec/java_home 2> /dev/null`
 fi
