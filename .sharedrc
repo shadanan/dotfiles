@@ -29,5 +29,25 @@ fi
 export LESS_TERMCAP_se=$'\E[0m'
 export LESS_TERMCAP_so=$'\E[01;33;03;40m'
 
+# TTY Sundried Colors
+if [ "$TERM" = "linux" ]; then
+    echo -en "\e]P0000000" # black
+    echo -en "\e]P1b75a4d" # red
+    echo -en "\e]P26a8855" # darkgreen
+    echo -en "\e]P3ae7237" # yellow
+    echo -en "\e]P4596fa8" # blue
+    echo -en "\e]P5995963" # magenta
+    echo -en "\e]P65e8d87" # cyan
+    echo -en "\e]P7d3d3d3" # white
+    echo -en "\e]P8606059" # bright black
+    echo -en "\e]P9ba180a" # bright red
+    echo -en "\e]Pa009a2a" # bright green
+    echo -en "\e]Pbfe7f29" # bright yellow
+    echo -en "\e]Pc8bacf9" # bright blue
+    echo -en "\e]Pdff9fb0" # bright magenta
+    echo -en "\e]Pe00bea4" # bright cyan
+    echo -en "\e]Pffefefe" # bright white
+fi
+
 # Default Editor
 export EDITOR=$(which vim)
