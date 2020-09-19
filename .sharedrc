@@ -12,6 +12,10 @@ if [ -d "$HOME/.local/lib/python" ]; then
 	export PYTHONPATH="$HOME/.local/lib/python:$PYTHONPATH"
 fi
 
+if [ -d "/usr/local/go/bin" ]; then
+	export PATH="/usr/local/go/bin:$PATH"
+fi
+
 if [ -x "$(command -v go)" ]; then
     export GOPATH=$(go env GOPATH)
     export PATH=$PATH:$GOPATH/bin
