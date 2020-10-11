@@ -42,9 +42,6 @@ symlink "$DOTFILES_DIR/bash-git-prompt-master" "$HOME/.bash-git-prompt"
 # xonsh
 symlink "$DOTFILES_DIR/.xonshrc" "$HOME/.xonshrc"
 
-# iterm2
-symlink "$DOTFILES_DIR/.iterm2" "$HOME/.iterm2"
-
 # git
 symlink "$DOTFILES_DIR/.gitconfig" "$HOME/.gitconfig"
 symlink "$DOTFILES_DIR/.gitignore_global" "$HOME/.gitignore_global"
