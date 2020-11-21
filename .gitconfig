@@ -12,3 +12,8 @@
 	dag = log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) -%C(auto)%d%C(reset) %C(bold white)%s%C(reset)%n          %C(dim white)%an%C(reset) <%ae> -%C(reset) %C(cyan)%aD%C(reset) %C(green)(%ar)%C(reset)' --all
 [pull]
 	rebase = true
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
