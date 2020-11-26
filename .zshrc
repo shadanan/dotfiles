@@ -1,6 +1,9 @@
 # Disable Oh My Zsh auto update
 DISABLE_AUTO_UPDATE=true
 
+# Ignore insecure completion-dependent directories
+ZSH_DISABLE_COMPFIX=true
+
 # Source shared environment
 source ~/.sharedrc
 
