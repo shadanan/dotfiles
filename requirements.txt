@@ -1,0 +1,29 @@
+# Core Tools
+pip
+requests
+
+# JupyterLab
+jupyterlab
+jupyterlab_code_formatter 
+xeus-python
+black 
+isort
+nbdime
+
+# Data Science
+numpy
+pandas
+scipy
+sympy
+seaborn
+statsmodels
+
+# Visualization
+matplotlib
+altair
+bokeh
+plotly
+
+# Machine Learning
+scikit-learn
+catboost
