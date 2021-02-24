@@ -34,3 +34,5 @@
 	prompt = false
 [fetch]
 	prune = true
+[http]
+	cookiefile = ~/.gitcookies
