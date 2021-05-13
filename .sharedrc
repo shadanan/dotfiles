@@ -40,6 +40,12 @@ if [ -f /Applications/draw.io.app/Contents/MacOS/draw.io ]; then
     alias draw.io='/Applications/draw.io.app/Contents/MacOS/draw.io'
 fi
 
+if [ "$(uname)" == "Darwin" ]; then
+    function resize() {
+        osascript -e "tell application \"$1\" to set bounds of front window to $2"
+    }
+fi
+
 # Less Colors
 export LESS_TERMCAP_se=$'\E[0m'
 export LESS_TERMCAP_so=$'\E[01;33;03;40m'

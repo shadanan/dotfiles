@@ -1,6 +1,7 @@
 # Core Tools
 pip
 requests
+tqdm
 
 # JupyterLab
 jupyterlab
