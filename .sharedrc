@@ -40,7 +40,7 @@ if [ -f /Applications/draw.io.app/Contents/MacOS/draw.io ]; then
     alias draw.io='/Applications/draw.io.app/Contents/MacOS/draw.io'
 fi
 
-if [ "$(uname)" == "Darwin" ]; then
+if [[ "$(uname)" == "Darwin" ]]; then
     function resize() {
         osascript -e "tell application \"$1\" to set bounds of front window to $2"
     }
