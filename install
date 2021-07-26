@@ -3,7 +3,7 @@
 pushd $( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
 install_from_github() {
-	# $1 is of the form: robbyrussell/oh-my-zsh
+	# $1 is of the form: ohmyzsh/ohmyzsh
 	FILE=$(echo $1 | cut -d'/' -f2)
 	echo "Downloading https://github.com/$1/"
 	curl -# -L "https://github.com/$1/archive/master.zip" -o "$FILE.zip"
@@ -11,7 +11,6 @@ install_from_github() {
 	unzip -q "$FILE.zip"
 }
 
-install_from_github "robbyrussell/oh-my-zsh"
 install_from_github "ohmyzsh/ohmyzsh"
 install_from_github "shadanan/zsh-git-prompt"
 install_from_github "zsh-users/zsh-syntax-highlighting"
@@ -19,7 +18,6 @@ install_from_github "magicmonty/bash-git-prompt"
 install_from_github "tpope/vim-pathogen"
 install_from_github "easymotion/vim-easymotion"
 install_from_github "ConradIrwin/vim-bracketed-paste"
-install_from_github "bmfurtado/iterm2-cssh"
 
 . makelinks
 
