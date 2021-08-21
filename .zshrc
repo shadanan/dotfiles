@@ -8,7 +8,7 @@ ZSH_DISABLE_COMPFIX=true
 source ~/.sharedrc
 
 # Activate shad's zsh git prompt
-source "$HOME/.zsh-git-prompt/zshrc.sh"
+source "$HOME/.zsh-git-prompt/git-prompt.zsh"
 
 # Path to oh-my-zsh installation
 export ZSH=$HOME/.oh-my-zsh

@@ -27,7 +27,7 @@ symlink "$DOTFILES_DIR/.profile" "$HOME/.profile"
 
 # zsh
 symlink "$DOTFILES_DIR/.zshrc" "$HOME/.zshrc"
-symlink "$DOTFILES_DIR/zsh-git-prompt-master" "$HOME/.zsh-git-prompt"
+symlink "$DOTFILES_DIR/git-prompt.zsh-master" "$HOME/.zsh-git-prompt"
 symlink "$DOTFILES_DIR/ohmyzsh-master" "$HOME/.oh-my-zsh"
 mkdir -p "$HOME/.oh-my-zsh/custom/plugins"
 symlink "$DOTFILES_DIR/zsh-syntax-highlighting-master" "$HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting"
