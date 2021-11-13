@@ -23,6 +23,12 @@ if [ -d "$HOME/.local/lib/python" ]; then
 	export PYTHONPATH="$HOME/.local/lib/python:$PYTHONPATH"
 fi
 
+# homebrew
+if [ -f "/opt/homebrew/bin/brew" ]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
+
+# go
 if [ -d "/usr/local/go/bin" ]; then
 	export PATH="/usr/local/go/bin:$PATH"
 fi
@@ -32,10 +38,12 @@ if [ -x "$(command -v go)" ]; then
     export PATH=$PATH:$GOPATH/bin
 fi
 
+# java
 if [ -f /usr/libexec/java_home ]; then
 	export JAVA_HOME=`/usr/libexec/java_home 2> /dev/null`
 fi
 
+# draw.io
 if [ -f /Applications/draw.io.app/Contents/MacOS/draw.io ]; then
     alias draw.io='/Applications/draw.io.app/Contents/MacOS/draw.io'
 fi
@@ -46,7 +54,7 @@ if [[ "$(uname)" == "Darwin" ]]; then
     }
 fi
 
-# Less Colors
+# less
 export LESS_TERMCAP_se=$'\E[0m'
 export LESS_TERMCAP_so=$'\E[01;33;03;40m'
 

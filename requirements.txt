@@ -28,4 +28,3 @@ plotly
 
 # Machine Learning
 scikit-learn
-catboost
