@@ -7,7 +7,6 @@ tqdm
 jupyterlab
 jupyterlab_code_formatter 
 jupyterlab_sublime
-xeus-python
 black 
 isort
 nbdime
