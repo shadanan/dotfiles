@@ -24,8 +24,13 @@ if [ -d "$HOME/.local/lib/python" ]; then
 fi
 
 # homebrew
-if [ -f "/opt/homebrew/bin/brew" ]; then
-    eval "$(/opt/homebrew/bin/brew shellenv)"
+if [ -x "$(command -v arch)" ]; then
+    if [[ ("$(arch)" == "i386") && (-x "/opt/intelbrew/bin/brew") ]]; then
+        eval "$(/opt/intelbrew/bin/brew shellenv)"
+    fi
+    if [[ ("$(arch)" == "arm64") && (-x "/opt/homebrew/bin/brew") ]]; then
+        eval "$(/opt/homebrew/bin/brew shellenv)"
+    fi
 fi
 
 # go

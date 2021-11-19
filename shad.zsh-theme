@@ -29,5 +29,11 @@ function venv_status {
 	fi
 }
 
+function arch_name {
+	if [ -x "$(command -v arch)" ]; then
+		echo "%{$fg[cyan]%}$(arch)%{$reset_color%}|"
+	fi
+}
+
 PROMPT='%{$fg[magenta]%}%n%{$reset_color%}@%{$fg[yellow]%}%m%{$reset_color%}:%{$fg_bold[blue]%}%~%{$reset_color%} $(gitprompt)
-%{$fg[green]%}%D{%Y-%m-%d %H:%M:%S}%{$reset_color%} [$(venv_status)%{%B%F{yellow}%}%!%{%f%k%b%}] %_$(prompt_char) '
+%{$fg[green]%}%D{%Y-%m-%d %H:%M:%S}%{$reset_color%} [$(venv_status)$(arch_name)%{%B%F{yellow}%}%!%{%f%k%b%}] %_$(prompt_char) '
