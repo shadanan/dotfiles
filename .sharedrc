@@ -101,7 +101,7 @@ if [[ "$(uname)" == "Darwin" ]]; then
             res=$(resolution $2) || return 1
             osascript -e "tell application \"System Events\" to ¬
                 set size of front window of process \"$1\" to $res"
-        else
+        elif [ "$#" -eq 0 ]; then
             echo "Usage: app [position] [resolution]"
             return 1
         fi
