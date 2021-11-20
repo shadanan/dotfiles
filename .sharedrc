@@ -53,9 +53,57 @@ if [ -f /Applications/draw.io.app/Contents/MacOS/draw.io ]; then
     alias draw.io='/Applications/draw.io.app/Contents/MacOS/draw.io'
 fi
 
+# resize
 if [[ "$(uname)" == "Darwin" ]]; then
-    function resize() {
-        osascript -e "tell application \"$1\" to set bounds of front window to $2"
+    resize() {
+        resolution() {
+            if [[ "$1" == "480p" ]]; then
+                echo "{720, 480}"
+            elif [[ "$1" == "720p" ]]; then
+                echo "{1280, 720}"
+            elif [[ "$1" == "1080p" ]]; then
+                echo "{1920, 1080}"
+            elif [[ "$1" == "1440p" ]]; then
+                echo "{2560, 1440}"
+            elif [[ "$1" == "4k" ]]; then
+                echo "{3840, 2160}"
+            elif [[ "$1" == "5k" ]]; then
+                echo "{5120, 2880}"
+            elif [[ "$1" == "8k" ]]; then
+                echo "{7680, 4320}"
+            else
+                echo >&2 "Unknown resolution: $1"
+                return 1
+            fi
+        }
+
+        if [ "$#" -eq 5 ]; then
+            osascript -e "
+                tell application \"System Events\" to tell process \"$1\"
+                    tell front window
+                        set position to {$2, $3}
+                        set size to {$4, $5}
+                    end tell
+                end tell"
+        elif [ "$#" -eq 4 ]; then
+            res=$(resolution $4) || return 1
+            osascript -e "
+                tell application \"System Events\" to tell process \"$1\"
+                    tell front window
+                        set position to {$2, $3}
+                        set size to $res
+                    end tell
+                end tell"
+        elif [ "$#" -eq 3 ]; then
+            osascript -e "tell application \"System Events\" to ¬
+                set size of front window of process \"$1\" to {$2, $3}"
+        elif [ "$#" -eq 2 ]; then
+            res=$(resolution $2) || return 1
+            osascript -e "tell application \"System Events\" to ¬
+                set size of front window of process \"$1\" to $res"
+        fi
+        osascript -e "tell application \"System Events\" to ¬
+            get {position, size} of front window of process \"$1\""
     }
 fi
 
