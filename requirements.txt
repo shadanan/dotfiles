@@ -5,16 +5,16 @@ tqdm
 
 # JupyterLab
 jupyterlab
-jupyterlab_code_formatter 
+jupyterlab_code_formatter
 jupyterlab_sublime
 ipywidgets
-black 
+black
 isort
-nbdime
 
 # Data Science
 numpy
 pandas
+pandas_profiling
 scipy
 sympy
 seaborn
@@ -27,4 +27,5 @@ bokeh
 plotly
 
 # Machine Learning
+catboost
 scikit-learn
