@@ -36,4 +36,4 @@ function arch_name {
 }
 
 PROMPT='%{$fg[magenta]%}%n%{$reset_color%}@%{$fg[yellow]%}%m%{$reset_color%}:%{$fg_bold[blue]%}%~%{$reset_color%} $(gitprompt)
-%{$fg[green]%}%D{%Y-%m-%d %H:%M:%S}%{$reset_color%} [$(venv_status)$(arch_name)%{%B%F{yellow}%}%!%{%f%k%b%}] %_$(prompt_char) '
+%{$fg[green]%}%D{%Y-%m-%d %H:%M:%S}%{$reset_color%} [$(venv_status)$(arch_name)%{%B%F{yellow}%}%!%{%f%k%b%}] $(prompt_char) '
