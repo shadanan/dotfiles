@@ -7,6 +7,11 @@ ZSH_DISABLE_COMPFIX=true
 # Source shared environment
 source ~/.sharedrc
 
+# Configure history
+setopt appendhistory
+setopt sharehistory
+setopt incappendhistory
+
 # Activate shad's zsh git prompt
 source "$HOME/.zsh-git-prompt/git-prompt.zsh"
 
