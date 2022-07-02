@@ -11,6 +11,7 @@ source ~/.sharedrc
 setopt appendhistory
 setopt sharehistory
 setopt incappendhistory
+setopt histIgnoreSpace
 
 # Activate shad's zsh git prompt
 source "$HOME/.zsh-git-prompt/git-prompt.zsh"
