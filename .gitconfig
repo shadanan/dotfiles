@@ -9,7 +9,7 @@
 [color]
 	ui = auto
 [alias]
-	dag = log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) -%C(auto)%d%C(reset) %C(bold white)%s%C(reset)%n          %C(dim white)%an%C(reset) <%ae> -%C(reset) %C(cyan)%aD%C(reset) %C(green)(%ar)%C(reset)' --all
+	dag = log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) -%C(auto)%d%C(reset) %C(bold white)%s%C(reset)%n          %C(dim white)%an%C(reset) <%ae> -%C(reset) %C(cyan)%aD%C(reset) %C(green)(%ar)%C(reset)'
 [pull]
 	rebase = true
 [filter "lfs"]
@@ -36,3 +36,5 @@
 	prune = true
 [http]
 	cookiefile = ~/.gitcookies
+[init]
+	templateDir = /Users/shsharma/.git-template
