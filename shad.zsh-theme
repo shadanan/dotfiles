@@ -21,10 +21,14 @@ function prompt_char {
 	if [ $UID -eq 0 ]; then echo "%{$fg[red]%}#%{$reset_color%}"; else echo $; fi
 }
 
-function venv_status {
-	if [ -z "$VIRTUAL_ENV" ]; then
-		echo ''
-	else
+function ruby_name {
+	if ! [ -z "$RUBY_ENGINE" ]; then
+		echo "%{$fg[red]%}${RUBY_ENGINE##*/}-${RUBY_VERSION##*/}%{$reset_color%}|"
+	fi
+}
+
+function venv_name {
+	if ! [ -z "$VIRTUAL_ENV" ]; then
 		echo "%{$fg[red]%}${VIRTUAL_ENV##*/}%{$reset_color%}|"
 	fi
 }
@@ -35,5 +39,9 @@ function arch_name {
 	fi
 }
 
+function tool_status {
+	echo "$(ruby_name)$(venv_name)$(arch_name)"
+}
+
 PROMPT='%{$fg[magenta]%}%n%{$reset_color%}@%{$fg[yellow]%}%m%{$reset_color%}:%{$fg_bold[blue]%}%~%{$reset_color%} $(gitprompt)
-%{$fg[green]%}%D{%Y-%m-%d %H:%M:%S}%{$reset_color%} [$(venv_status)$(arch_name)%{%B%F{yellow}%}%!%{%f%k%b%}] $(prompt_char) '
+%{$fg[green]%}%D{%Y-%m-%d %H:%M:%S}%{$reset_color%} [$(tool_status)%{%B%F{yellow}%}%!%{%f%k%b%}] $(prompt_char) '
