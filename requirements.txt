@@ -15,6 +15,7 @@ isort
 numpy
 pandas
 pandas_profiling
+pyarrow
 scipy
 sympy
 seaborn
