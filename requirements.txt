@@ -13,6 +13,7 @@ isort
 
 # Data Science
 numpy
+numba
 pandas
 pandas_profiling
 pyarrow
