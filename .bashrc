@@ -8,11 +8,16 @@ if [ -f /etc/bashrc ]; then
 	. /etc/bashrc
 fi
 
-# Enable homebrew bash completion
-if hash brew 2> /dev/null; then
-	if [ -f $(brew --prefix)/share/bash-completion/bash_completion ]; then
-		. $(brew --prefix)/share/bash-completion/bash_completion
-	fi
+# Enable homebrew bash completions
+if type brew &> /dev/null; then
+  HOMEBREW_PREFIX="$(brew --prefix)"
+  if [[ -r "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh" ]]; then
+    source "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh"
+  else
+    for COMPLETION in "${HOMEBREW_PREFIX}/etc/bash_completion.d/"*; do
+      [[ -r "${COMPLETION}" ]] && source "${COMPLETION}"
+    done
+  fi
 fi
 
 # Bash history fixes

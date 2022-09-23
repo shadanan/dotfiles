@@ -13,6 +13,13 @@ setopt sharehistory
 setopt incappendhistory
 setopt histIgnoreSpace
 
+# Enable homebrew zsh completions
+if type brew &> /dev/null; then
+  FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+  autoload -Uz compinit
+  compinit
+fi
+
 # Activate shad's zsh git prompt
 source "$HOME/.zsh-git-prompt/git-prompt.zsh"
 
