@@ -51,7 +51,7 @@ fi
 # go
 if [ -x "$(command -v go)" ]; then
     export GOPATH=$(go env GOPATH)
-    export PATH=$PATH:$GOPATH/bin
+    export PATH="$GOPATH/bin:$PATH"
 fi
 
 # java
