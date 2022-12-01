@@ -64,6 +64,19 @@ if [ -f /Applications/draw.io.app/Contents/MacOS/draw.io ]; then
     alias draw.io='/Applications/draw.io.app/Contents/MacOS/draw.io'
 fi
 
+# git-sqash-merged
+if [ -x "$(command -v git)" ]; then
+    git-squash-merged() {
+        parent=$(git rev-parse --abbrev-ref HEAD)
+        git for-each-ref refs/heads/ "--format=%(refname:short)" | while read branch; do 
+            mergeBase=$(git merge-base $parent $branch)
+            if [[ $(git cherry $parent $(git commit-tree $(git rev-parse "$branch^{tree}") -p $mergeBase -m _)) == "-"* ]]; then
+                echo $branch;
+            fi
+        done
+    }
+fi
+
 # resize
 if [[ "$(uname)" == "Darwin" ]]; then
     resize() {
