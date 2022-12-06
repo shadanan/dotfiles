@@ -3,6 +3,7 @@
 	email = shadanan@gmail.com
 [push]
     default = current
+	autoSetupRemote = true
 [core]
 	excludesfile = ~/.gitignore_global
 	pager = less -FMRiX
