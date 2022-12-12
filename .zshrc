@@ -4,6 +4,9 @@ DISABLE_AUTO_UPDATE=true
 # Ignore insecure completion-dependent directories
 ZSH_DISABLE_COMPFIX=true
 
+# Disable magic functions so that URLs paste properly
+DISABLE_MAGIC_FUNCTIONS=true
+
 # Source shared environment
 source ~/.sharedrc
 
