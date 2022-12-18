@@ -20,7 +20,7 @@ setopt histIgnoreSpace
 if type brew &> /dev/null; then
   FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
   autoload -Uz compinit
-  compinit
+  compinit -u
 fi
 
 # Activate shad's zsh git prompt
