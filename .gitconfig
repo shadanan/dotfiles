@@ -10,8 +10,7 @@
 [color]
 	ui = auto
 [alias]
-	dag = log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) -%C(auto)%d%C(reset) %C(bold yellow italic)%s%C(reset)%n%C(bold magenta)➥%C(reset) %C(dim white)%an%C(reset) <%C(ul)%ae%C(reset)> -%C(reset) %C(cyan)%aD%C(reset) %C(green)(%ar)%C(reset)'
-	mcl = log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) -%C(auto)%d%C(reset) %C(bold yellow italic)%s%C(reset)%n%C(bold magenta)➥%C(reset) %C(dim white)%an%C(reset) <%C(ul)%ae%C(reset)> -%C(reset) %C(cyan)%aD%C(reset) %C(green)(%ar)%C(reset)%+b'
+	dag = log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) -%C(auto)%d%C(reset) %C(bold yellow italic)%s%C(reset)%n%C(bold magenta)➥%C(reset) %C(dim white)%an%C(reset) <%C(ul)%ae%C(reset)> -%C(reset) %C(cyan)%aD%C(reset) %C(green)(%ar)%C(reset)' --all
 [pull]
 	rebase = true
 [filter "lfs"]
