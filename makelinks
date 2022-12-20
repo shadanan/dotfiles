@@ -42,6 +42,7 @@ symlink "$DOTFILES_DIR/bash-git-prompt-master" "$HOME/.bash-git-prompt"
 # git
 symlink "$DOTFILES_DIR/.gitconfig" "$HOME/.gitconfig"
 symlink "$DOTFILES_DIR/.gitignore_global" "$HOME/.gitignore_global"
+symlink "$DOTFILES_DIR/.tigrc" "$HOME/.tigrc"
 
 # bin
 mkdir -p "$HOME/.local/bin"
