@@ -7,6 +7,9 @@ ZSH_DISABLE_COMPFIX=true
 # Disable magic functions so that URLs paste properly
 DISABLE_MAGIC_FUNCTIONS=true
 
+# Set history file
+export HISTFILE=~/.zsh_history
+
 # Source shared environment
 source ~/.sharedrc
 
