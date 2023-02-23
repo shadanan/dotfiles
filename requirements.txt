@@ -29,5 +29,5 @@ bokeh
 plotly
 
 # Machine Learning
-catboost
+xgboost
 scikit-learn
