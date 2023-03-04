@@ -19,8 +19,15 @@ setopt sharehistory
 setopt incappendhistory
 setopt histIgnoreSpace
 
-# Enable homebrew zsh completions
-if type brew &> /dev/null; then
+# gcloud
+if [ -x "$(command -v brew)" ]; then
+    if [ -f "$(brew --prefix)/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc" ]; then
+        source "$(brew --prefix)/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
+    fi
+fi
+
+# Homebrew zsh completions
+if [ -x "$(command -v brew)" ]; then
   FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
   autoload -Uz compinit
   compinit -u
