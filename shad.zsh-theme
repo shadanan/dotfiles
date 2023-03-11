@@ -33,6 +33,12 @@ function venv_name {
 	fi
 }
 
+function conda_name {
+	if ! [ -z "$CONDA_DEFAULT_ENV" ]; then
+		echo "%{$fg[red]%}${CONDA_DEFAULT_ENV##*/}%{$reset_color%}|"
+	fi
+}
+
 function arch_name {
 	if [ -x "$(command -v arch)" ]; then
 		echo "%{$fg[cyan]%}$(arch)%{$reset_color%}|"
@@ -40,7 +46,7 @@ function arch_name {
 }
 
 function tool_status {
-	echo "$(ruby_name)$(venv_name)$(arch_name)"
+	echo "$(ruby_name)$(venv_name)$(conda_name)$(arch_name)"
 }
 
 PROMPT='%{$fg[magenta]%}%n%{$reset_color%}@%{$fg[yellow]%}%m%{$reset_color%}:%{$fg_bold[blue]%}%~%{$reset_color%} $(gitprompt)

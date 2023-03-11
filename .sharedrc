@@ -36,6 +36,13 @@ if [ -x "$(command -v arch)" ]; then
     fi
 fi
 
+# conda
+if [ -x "$(command -v brew)" ]; then
+    if [ -f "$(brew --prefix)/Caskroom/miniconda/base/etc/profile.d/conda.sh" ]; then
+        . "$(brew --prefix)/Caskroom/miniconda/base/etc/profile.d/conda.sh"
+    fi
+fi
+
 # ruby
 if [ -x "$(command -v brew)" ]; then
     if [ -d "$(brew --prefix)/opt/ruby/bin" ]; then
