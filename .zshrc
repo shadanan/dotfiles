@@ -26,11 +26,16 @@ if [ -x "$(command -v brew)" ]; then
     fi
 fi
 
-# Homebrew zsh completions
+# Homebrew zsh completion
 if [ -x "$(command -v brew)" ]; then
   FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
   autoload -Uz compinit
   compinit -u
+fi
+
+# 1password cli zsh completion
+if [ -x "$(command -v op)" ]; then
+  eval "$(op completion zsh)"; compdef _op op
 fi
 
 # Activate shad's zsh git prompt

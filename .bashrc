@@ -15,15 +15,16 @@ if [ -x "$(command -v brew)" ]; then
     fi
 fi
 
-# Homebrew bash completions
+# Homebrew bash completion
 if [ -x "$(command -v brew)" ]; then
   if [[ -r "$(brew --prefix)/etc/profile.d/bash_completion.sh" ]]; then
     source "$(brew --prefix)/etc/profile.d/bash_completion.sh"
-  else
-    for COMPLETION in "$(brew --prefix)/etc/bash_completion.d/"*; do
-      [[ -r "${COMPLETION}" ]] && source "${COMPLETION}"
-    done
   fi
+fi
+
+# 1password cli bash completion
+if [ -x "$(command -v op)" ]; then
+  source <(op completion bash)
 fi
 
 # Bash history fixes
