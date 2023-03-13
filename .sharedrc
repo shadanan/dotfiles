@@ -3,11 +3,11 @@
 pushd "$HOME/.dotfiles" > /dev/null
 (git fetch -q &) 1> /dev/null
 if [ $(git rev-list --left-right origin...HEAD | wc -l) -ne "0" ]; then
-   echo "╭───────────────────────────────────────────╮"
-   echo "│                                           │"
-   echo "│    New version of \033[1;32m.dotfiles\033[0m available!    │"
-   echo "│                                           │"
-   echo "╰───────────────────────────────────────────╯"
+  echo "╭───────────────────────────────────────────╮"
+  echo "│                                           │"
+  echo "│    New version of \033[1;32m.dotfiles\033[0m available!    │"
+  echo "│                                           │"
+  echo "╰───────────────────────────────────────────╯"
 fi
 popd > /dev/null
 
@@ -25,43 +25,43 @@ fi
 
 # homebrew
 if [ -x "$(command -v arch)" ]; then
-    if [[ ("$(arch)" == "i386") && (-x "/opt/intelbrew/bin/brew") ]]; then
-        eval "$(/opt/intelbrew/bin/brew shellenv)"
-    fi
-    if [[ ("$(arch)" == "arm64") && (-x "/opt/homebrew/bin/brew") ]]; then
-        eval "$(/opt/homebrew/bin/brew shellenv)"
-    fi
-    if [[ -x "/home/linuxbrew/.linuxbrew/bin/brew" ]]; then
-        eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-    fi
+  if [[ ("$(arch)" == "i386") && (-x "/opt/intelbrew/bin/brew") ]]; then
+    eval "$(/opt/intelbrew/bin/brew shellenv)"
+  fi
+  if [[ ("$(arch)" == "arm64") && (-x "/opt/homebrew/bin/brew") ]]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+  fi
+  if [[ -x "/home/linuxbrew/.linuxbrew/bin/brew" ]]; then
+    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+  fi
 fi
 
 # conda
 if [ -x "$(command -v brew)" ]; then
-    if [ -f "$(brew --prefix)/Caskroom/miniconda/base/etc/profile.d/conda.sh" ]; then
-        . "$(brew --prefix)/Caskroom/miniconda/base/etc/profile.d/conda.sh"
-    fi
+  if [ -f "$(brew --prefix)/Caskroom/miniconda/base/etc/profile.d/conda.sh" ]; then
+    source "$(brew --prefix)/Caskroom/miniconda/base/etc/profile.d/conda.sh"
+  fi
 fi
 
 # ruby
 if [ -x "$(command -v brew)" ]; then
-    if [ -d "$(brew --prefix)/opt/ruby/bin" ]; then
-        export PATH="$(brew --prefix)/opt/ruby/bin:$PATH"
-    fi
+  if [ -d "$(brew --prefix)/opt/ruby/bin" ]; then
+    export PATH="$(brew --prefix)/opt/ruby/bin:$PATH"
+  fi
 fi
 
 # chruby
 if [ -x "$(command -v brew)" ]; then
-    if [ -d "$(brew --prefix)/opt/chruby" ]; then
-        source $(brew --prefix)/opt/chruby/share/chruby/chruby.sh
-        source $(brew --prefix)/opt/chruby/share/chruby/auto.sh
-    fi
+  if [ -d "$(brew --prefix)/opt/chruby" ]; then
+    source $(brew --prefix)/opt/chruby/share/chruby/chruby.sh
+    source $(brew --prefix)/opt/chruby/share/chruby/auto.sh
+  fi
 fi
 
 # go
 if [ -x "$(command -v go)" ]; then
-    export GOPATH=$(go env GOPATH)
-    export PATH="$GOPATH/bin:$PATH"
+  export GOPATH=$(go env GOPATH)
+  export PATH="$GOPATH/bin:$PATH"
 fi
 
 # java
@@ -71,89 +71,89 @@ fi
 
 # draw.io
 if [ -f /Applications/draw.io.app/Contents/MacOS/draw.io ]; then
-    alias draw.io='/Applications/draw.io.app/Contents/MacOS/draw.io'
+  alias draw.io='/Applications/draw.io.app/Contents/MacOS/draw.io'
 fi
 
 # git-sqash-merged
 if [ -x "$(command -v git)" ]; then
-    git-squash-merged() {
-        parent=$(git rev-parse --abbrev-ref HEAD)
-        git for-each-ref refs/heads/ "--format=%(refname:short)" | while read branch; do 
-            mergeBase=$(git merge-base $parent $branch)
-            if [[ $(git cherry $parent $(git commit-tree $(git rev-parse "$branch^{tree}") -p $mergeBase -m _)) == "-"* ]]; then
-                echo $branch;
-            fi
-        done
-    }
+  git-squash-merged() {
+    local parent=$(git rev-parse --abbrev-ref HEAD)
+    git for-each-ref refs/heads/ "--format=%(refname:short)" | while read branch; do 
+      local mergeBase=$(git merge-base $parent $branch)
+      if [[ $(git cherry $parent $(git commit-tree $(git rev-parse "$branch^{tree}") -p $mergeBase -m _)) == "-"* ]]; then
+        echo $branch;
+      fi
+    done
+  }
 fi
 
 # resize
 if [[ "$(uname)" == "Darwin" ]]; then
-    resize() {
-        resolution() {
-            if [[ "$1" == "480p" ]]; then
-                echo "{720, 480}"
-            elif [[ "$1" == "720p" ]]; then
-                echo "{1280, 720}"
-            elif [[ "$1" == "1080p" ]]; then
-                echo "{1920, 1080}"
-            elif [[ "$1" == "1440p" ]]; then
-                echo "{2560, 1440}"
-            elif [[ "$1" == "4k" ]]; then
-                echo "{3840, 2160}"
-            elif [[ "$1" == "5k" ]]; then
-                echo "{5120, 2880}"
-            elif [[ "$1" == "8k" ]]; then
-                echo "{7680, 4320}"
-            else
-                echo >&2 "Unknown resolution: $1"
-                return 1
-            fi
-        }
-
-        if [ "$#" -eq 5 ]; then
-            osascript -e "
-                tell application \"System Events\" to tell process \"$1\"
-                    tell front window
-                        set position to {$2, $3}
-                        set size to {$4, $5}
-                    end tell
-                end tell"
-        elif [ "$#" -eq 4 ]; then
-            res=$(resolution $4) || return 1
-            osascript -e "
-                tell application \"System Events\" to tell process \"$1\"
-                    tell front window
-                        set position to {$2, $3}
-                        set size to $res
-                    end tell
-                end tell"
-        elif [ "$#" -eq 3 ]; then
-            osascript -e "tell application \"System Events\" to ¬
-                set size of front window of process \"$1\" to {$2, $3}"
-        elif [ "$#" -eq 2 ]; then
-            res=$(resolution $2) || return 1
-            osascript -e "tell application \"System Events\" to ¬
-                set size of front window of process \"$1\" to $res"
-        elif [ "$#" -eq 0 ]; then
-            echo "Usage: app [position] [resolution]"
-            return 1
-        fi
-        osascript -e "tell application \"System Events\" to ¬
-            get {position, size} of front window of process \"$1\""
+  resize() {
+    resolution() {
+      if [[ "$1" == "480p" ]]; then
+        echo "{720, 480}"
+      elif [[ "$1" == "720p" ]]; then
+        echo "{1280, 720}"
+      elif [[ "$1" == "1080p" ]]; then
+        echo "{1920, 1080}"
+      elif [[ "$1" == "1440p" ]]; then
+        echo "{2560, 1440}"
+      elif [[ "$1" == "4k" ]]; then
+        echo "{3840, 2160}"
+      elif [[ "$1" == "5k" ]]; then
+        echo "{5120, 2880}"
+      elif [[ "$1" == "8k" ]]; then
+        echo "{7680, 4320}"
+      else
+        echo >&2 "Unknown resolution: $1"
+        return 1
+      fi
     }
+
+    if [ "$#" -eq 5 ]; then
+      osascript -e "
+        tell application \"System Events\" to tell process \"$1\"
+          tell front window
+            set position to {$2, $3}
+            set size to {$4, $5}
+          end tell
+        end tell"
+    elif [ "$#" -eq 4 ]; then
+      local res=$(resolution $4) || return 1
+      osascript -e "
+        tell application \"System Events\" to tell process \"$1\"
+          tell front window
+            set position to {$2, $3}
+            set size to $res
+          end tell
+        end tell"
+    elif [ "$#" -eq 3 ]; then
+      osascript -e "tell application \"System Events\" to ¬
+        set size of front window of process \"$1\" to {$2, $3}"
+    elif [ "$#" -eq 2 ]; then
+      local res=$(resolution $2) || return 1
+      osascript -e "tell application \"System Events\" to ¬
+        set size of front window of process \"$1\" to $res"
+    elif [ "$#" -eq 0 ]; then
+      echo "Usage: app [position] [resolution]"
+      return 1
+    fi
+    osascript -e "tell application \"System Events\" to ¬
+      get {position, size} of front window of process \"$1\""
+  }
 fi
 
 telegram() {
-    if [ -n "$TELEGRAM_TOKEN" ] && [ -n "$TELEGRAM_CHAT_ID" ]; then
-        curl -s \
-            -X POST \
-            -d "chat_id=$TELEGRAM_CHAT_ID" \
-            -d "text=$1" \
-            https://api.telegram.org/bot$TELEGRAM_TOKEN/sendMessage
-    else
-        echo "TELEGRAM_TOKEN and TELEGRAM_CHAT_ID must be set"
-    fi
+  if [ -n "$TELEGRAM_TOKEN" ] && [ -n "$TELEGRAM_CHAT_ID" ]; then
+    curl -s \
+      -X POST \
+      -d "chat_id=$TELEGRAM_CHAT_ID" \
+      -d "text=$1" \
+      https://api.telegram.org/bot$TELEGRAM_TOKEN/sendMessage
+  else
+    echo "TELEGRAM_TOKEN and TELEGRAM_CHAT_ID must be set"
+  fi
 }
 
 # less
@@ -162,22 +162,22 @@ export LESS_TERMCAP_so=$'\E[01;33;03;40m'
 
 # TTY Sundried Colors
 if [ "$TERM" = "linux" ]; then
-    echo -en "\e]P0000000" # black
-    echo -en "\e]P1b75a4d" # red
-    echo -en "\e]P26a8855" # darkgreen
-    echo -en "\e]P3ae7237" # yellow
-    echo -en "\e]P4596fa8" # blue
-    echo -en "\e]P5995963" # magenta
-    echo -en "\e]P65e8d87" # cyan
-    echo -en "\e]P7d3d3d3" # white
-    echo -en "\e]P8606059" # bright black
-    echo -en "\e]P9ba180a" # bright red
-    echo -en "\e]Pa009a2a" # bright green
-    echo -en "\e]Pbfe7f29" # bright yellow
-    echo -en "\e]Pc8bacf9" # bright blue
-    echo -en "\e]Pdff9fb0" # bright magenta
-    echo -en "\e]Pe00bea4" # bright cyan
-    echo -en "\e]Pffefefe" # bright white
+  echo -en "\e]P0000000" # black
+  echo -en "\e]P1b75a4d" # red
+  echo -en "\e]P26a8855" # darkgreen
+  echo -en "\e]P3ae7237" # yellow
+  echo -en "\e]P4596fa8" # blue
+  echo -en "\e]P5995963" # magenta
+  echo -en "\e]P65e8d87" # cyan
+  echo -en "\e]P7d3d3d3" # white
+  echo -en "\e]P8606059" # bright black
+  echo -en "\e]P9ba180a" # bright red
+  echo -en "\e]Pa009a2a" # bright green
+  echo -en "\e]Pbfe7f29" # bright yellow
+  echo -en "\e]Pc8bacf9" # bright blue
+  echo -en "\e]Pdff9fb0" # bright magenta
+  echo -en "\e]Pe00bea4" # bright cyan
+  echo -en "\e]Pffefefe" # bright white
 fi
 
 # Default Editor

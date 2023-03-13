@@ -54,6 +54,48 @@ fi
 # Activate oh-my-zsh
 source $ZSH/oh-my-zsh.sh
 
+notify() {
+  local exit_code=$?
+  local -a stats=( $(fc -Dl -1) )
+
+  local -a time=( "${(s.:.)stats[2]}" )
+  local -i seconds=0 mult=1
+  while (( $#time[@] )); do
+    (( seconds += mult * time[-1] ))
+    (( mult *= 60 ))
+    shift -p time
+  done
+
+  local user=$(whoami)
+  local host=$(hostname)
+  local cmd=$stats[3,-1]
+  local message=""
+  if [[ $exit_code -ne 0 ]]; then
+    message+="❌ Command failed"
+  else
+    message+="✅ Command succeeded"
+  fi
+  message+=" after $stats[2] on \`$user@$host\`:
+\`\`\`shell
+$cmd
+\`\`\`"
+
+  if (( seconds >= 120 )) && [ -n "$TELEGRAM_TOKEN" ] && [ -n "$TELEGRAM_CHAT_ID" ]; then
+    curl -s \
+      -X POST \
+      -d chat_id="$TELEGRAM_CHAT_ID" \
+      -d parse_mode="MarkdownV2" \
+      -d text="$message" \
+      "https://api.telegram.org/bot$TELEGRAM_TOKEN/sendMessage" \
+      > /dev/null
+  fi
+
+  return 0
+}
+
+autoload -Uz add-zsh-hook
+add-zsh-hook precmd notify
+
 # Enable Ctrl-x-e to edit command line
 autoload -U edit-command-line
 zle -N edit-command-line
