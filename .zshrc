@@ -38,7 +38,7 @@ if [ -x "$(command -v op)" ]; then
   eval "$(op completion zsh)"; compdef _op op
 fi
 
-# Activate shad's zsh git prompt
+# Activate Shad's zsh git prompt
 source "$HOME/.zsh-git-prompt/git-prompt.zsh"
 
 # Path to oh-my-zsh installation
@@ -46,9 +46,6 @@ export ZSH=$HOME/.oh-my-zsh
 
 # Set oh-my-zsh theme
 ZSH_THEME="shad"
-
-# Set oh-my-zsh plugins
-plugins=(z)
 
 if [ $(zsh --version | cut -d' ' -f2 | cut -d'.' -f1) -gt "4" ]; then
 	plugins+=(zsh-syntax-highlighting)
