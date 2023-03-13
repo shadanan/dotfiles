@@ -144,6 +144,18 @@ if [[ "$(uname)" == "Darwin" ]]; then
     }
 fi
 
+telegram() {
+    if [ -n "$TELEGRAM_TOKEN" ] && [ -n "$TELEGRAM_CHAT_ID" ]; then
+        curl -s \
+            -X POST \
+            -d "chat_id=$TELEGRAM_CHAT_ID" \
+            -d "text=$1" \
+            https://api.telegram.org/bot$TELEGRAM_TOKEN/sendMessage
+    else
+        echo "TELEGRAM_TOKEN and TELEGRAM_CHAT_ID must be set"
+    fi
+}
+
 # less
 export LESS_TERMCAP_se=$'\E[0m'
 export LESS_TERMCAP_so=$'\E[01;33;03;40m'
