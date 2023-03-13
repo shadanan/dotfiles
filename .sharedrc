@@ -149,10 +149,10 @@ telegram() {
     curl -s \
       -X POST \
       -d "chat_id=$TELEGRAM_CHAT_ID" \
+      -d parse_mode="MarkdownV2" \
       -d "text=$1" \
-      https://api.telegram.org/bot$TELEGRAM_TOKEN/sendMessage
-  else
-    echo "TELEGRAM_TOKEN and TELEGRAM_CHAT_ID must be set"
+      https://api.telegram.org/bot$TELEGRAM_TOKEN/sendMessage \
+      > /dev/null
   fi
 }
 

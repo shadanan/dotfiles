@@ -55,7 +55,7 @@ fi
 source $ZSH/oh-my-zsh.sh
 
 notify() {
-  local exit_code=$?
+  local exit_status=$?
   local -a stats=( $(fc -Dl -1) )
 
   local -a time=( "${(s.:.)stats[2]}" )
@@ -66,28 +66,11 @@ notify() {
     shift -p time
   done
 
-  local user=$(whoami)
-  local host=$(hostname)
-  local cmd=$stats[3,-1]
-  local message=""
-  if [[ $exit_code -ne 0 ]]; then
-    message+="❌ Command failed"
-  else
-    message+="✅ Command succeeded"
-  fi
-  message+=" after $stats[2] on \`$user@$host\`:
-\`\`\`shell
-$cmd
-\`\`\`"
-
-  if (( seconds >= 120 )) && [ -n "$TELEGRAM_TOKEN" ] && [ -n "$TELEGRAM_CHAT_ID" ]; then
-    curl -s \
-      -X POST \
-      -d chat_id="$TELEGRAM_CHAT_ID" \
-      -d parse_mode="MarkdownV2" \
-      -d text="$message" \
-      "https://api.telegram.org/bot$TELEGRAM_TOKEN/sendMessage" \
-      > /dev/null
+  if (( seconds >= 120 )); then
+    local emoji=$([ $exit_status -ne 0 ] && echo "❌" || echo "✅")
+    local exits=$([ $exit_status -ne 0 ] && echo "failed" || echo "succeeded")
+    local msg="${emoji} \`${stats[3,-1]}\` _${exits}_ after *${stats[2]}* on __$(whoami)@$(hostname -s)__"
+    telegram "$msg"
   fi
 
   return 0
