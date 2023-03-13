@@ -54,10 +54,18 @@ fi
 # Activate oh-my-zsh
 source $ZSH/oh-my-zsh.sh
 
+# Notify telegram on long running commands
 notify() {
+  # Store the exit status of the last command
   local exit_status=$?
-  local -a stats=( $(fc -Dl -1) )
 
+  # Ignore commands that are interactive
+  local interactive=(git less man vim)
+  if ((${interactive[(Ie)$stats[3]]})); then
+    return 0
+  fi
+
+  # Calculate the duration of the last command
   local -a time=( "${(s.:.)stats[2]}" )
   local -i seconds=0 mult=1
   while (( $#time[@] )); do
@@ -66,6 +74,7 @@ notify() {
     shift -p time
   done
 
+  # Notify if the command took longer than 2 minutes
   if (( seconds >= 120 )); then
     local emoji=$([ $exit_status -ne 0 ] && echo "❌" || echo "✅")
     local exits=$([ $exit_status -ne 0 ] && echo "failed" || echo "succeeded")
