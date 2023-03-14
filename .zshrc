@@ -78,9 +78,8 @@ notify() {
   # Notify if the command took longer than 2 minutes
   if (( seconds >= 120 )); then
     local emoji=$([ $exit_status -ne 0 ] && echo "❌" || echo "✅")
-    local exits=$([ $exit_status -ne 0 ] && echo "failed" || echo "succeeded")
-    local msg="${emoji} \`${stats[3,-1]}\` _${exits}_ after *${stats[2]}* on __$(whoami)@$(hostname -s)__"
-    telegram "$msg"
+    local msg="*${stats[2]}* \\- \`${stats[3,-1]}\`"
+    telegram "$emoji" "$msg"
   fi
 
   return 0

@@ -150,7 +150,7 @@ telegram() {
       -X POST \
       -d "chat_id=$TELEGRAM_CHAT_ID" \
       -d parse_mode="MarkdownV2" \
-      -d "text=$1" \
+      -d "text=$1 __$(whoami)@$(hostname -s)__ \\- $2" \
       https://api.telegram.org/bot$TELEGRAM_TOKEN/sendMessage \
       > /dev/null
   fi
