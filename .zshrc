@@ -61,7 +61,7 @@ notify() {
   local -a stats=( $(fc -Dl -1) )
 
   # Ignore commands that are interactive
-  local interactive=(git less man screen ssh tmux vim)
+  local interactive=(git htop less man screen ssh tmux top vim)
   if (( ${interactive[(Ie)$stats[3]]} )); then
     return 0
   fi
