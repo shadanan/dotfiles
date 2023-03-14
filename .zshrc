@@ -58,10 +58,11 @@ source $ZSH/oh-my-zsh.sh
 notify() {
   # Store the exit status of the last command
   local exit_status=$?
+  local -a stats=( $(fc -Dl -1) )
 
   # Ignore commands that are interactive
   local interactive=(git less man vim)
-  if ((${interactive[(Ie)$stats[3]]})); then
+  if (( ${interactive[(Ie)$stats[3]]} )); then
     return 0
   fi
 
