@@ -54,8 +54,19 @@ fi
 # Activate oh-my-zsh
 source $ZSH/oh-my-zsh.sh
 
+# Store the command to be executed in a global variable
+telegram_preexec_notify() {
+  telegram_notify_cmd=$1
+}
+
 # Notify telegram on long running commands
-notify() {
+telegram_precmd_notify() {
+  # Ignore if the command is empty
+  if [ -z "$telegram_notify_cmd" ]; then 
+    return 0
+  fi
+  unset telegram_notify_cmd
+
   # Store the exit status of the last command
   local exit_status=$?
   local -a stats=( $(fc -Dl -1) )
@@ -86,7 +97,8 @@ notify() {
 }
 
 autoload -Uz add-zsh-hook
-add-zsh-hook precmd notify
+add-zsh-hook preexec telegram_preexec_notify
+add-zsh-hook precmd telegram_precmd_notify
 
 # Enable Ctrl-x-e to edit command line
 autoload -U edit-command-line
