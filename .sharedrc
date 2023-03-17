@@ -1,7 +1,7 @@
 #!/bin/bash
 
 pushd "$HOME/.dotfiles" > /dev/null
-(git fetch -q &) 1> /dev/null
+(git pull -q --ff-only &) > /dev/null 2>&1
 if [ $(git rev-list --left-right origin...HEAD | wc -l) -ne "0" ]; then
   echo "╭───────────────────────────────────────────╮"
   echo "│                                           │"
