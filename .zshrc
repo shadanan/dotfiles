@@ -61,15 +61,15 @@ telegram_preexec_notify() {
 
 # Notify telegram on long running commands
 telegram_precmd_notify() {
+  # Store the exit status of the last command
+  local exit_status=$?
+  local -a stats=( $(fc -Dl -1) )
+
   # Ignore if the command is empty
   if [ -z "$telegram_notify_cmd" ]; then 
     return 0
   fi
   unset telegram_notify_cmd
-
-  # Store the exit status of the last command
-  local exit_status=$?
-  local -a stats=( $(fc -Dl -1) )
 
   # Ignore commands that are interactive
   local interactive=(git htop less man screen ssh tmux top vim)
