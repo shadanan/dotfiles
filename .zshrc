@@ -90,7 +90,7 @@ telegram_precmd_notify() {
   if (( seconds >= 120 )); then
     local emoji=$([ $exit_status -ne 0 ] && echo "❌" || echo "✅")
     local msg="*${stats[2]}* \\- \`${stats[3,-1]}\`"
-    telegram "$emoji" "$msg"
+    telegram "$msg" "$emoji"
   fi
 
   return 0
