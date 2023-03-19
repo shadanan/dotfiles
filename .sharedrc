@@ -146,13 +146,14 @@ fi
 
 telegram() {
   if [ -n "$TELEGRAM_TOKEN" ] && [ -n "$TELEGRAM_CHAT_ID" ]; then
-    curl -s \
-      -X POST \
-      -d "chat_id=$TELEGRAM_CHAT_ID" \
-      -d parse_mode="MarkdownV2" \
-      -d "text=$2 __$(whoami)@$(hostname -s)__ \\- $1" \
-      https://api.telegram.org/bot$TELEGRAM_TOKEN/sendMessage \
-      > /dev/null
+    (
+      curl -s \
+        -X POST \
+        -d "chat_id=$TELEGRAM_CHAT_ID" \
+        -d parse_mode="MarkdownV2" \
+        -d "text=$2 __$(whoami)@$(hostname -s)__ \\- $1" \
+        https://api.telegram.org/bot$TELEGRAM_TOKEN/sendMessage & \
+      ) > /dev/null 2>&1
   fi
 }
 
