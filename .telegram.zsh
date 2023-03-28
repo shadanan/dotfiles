@@ -42,8 +42,11 @@ telegram_precmd_notify() {
       done
     fi
 
-    local cmds=(htop less man screen ssh streamlit tmux top uvicorn vim)
+    local cmd=($@)
+    local cmds=(htop man screen ssh streamlit tmux top uvicorn vim)
     if (( ${cmds[(Ie)$1]} )); then
+      return 0
+    elif (( ${cmd[(Ie)less]} )); then
       return 0
     elif [[ $1 == "git" ]]; then
       local subcmds=(commit dag diff log)
