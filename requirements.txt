@@ -2,6 +2,7 @@
 pip
 requests
 tqdm
+yt-dlp
 
 # JupyterLab
 jupyterlab
@@ -13,14 +14,14 @@ isort
 
 # Data Science
 numpy
-numba
+#numba
 pandas
-pandas_profiling
 pyarrow
 scipy
 sympy
 seaborn
 statsmodels
+ydata-profiling
 
 # Visualization
 matplotlib

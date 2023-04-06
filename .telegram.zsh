@@ -31,6 +31,7 @@ telegram_precmd_notify() {
   local -a stats=( $(fc -Dl -1) )
 
   is_long_running() {
+    # Pop sudo and its arguments
     if [[ $1 == "sudo" ]]; then
       shift
       local args=(-C -D -g -h --host -p --prompt -R --chroot -T --command-timeout -u --user -U --other-user)
@@ -42,8 +43,13 @@ telegram_precmd_notify() {
       done
     fi
 
+    # Pop environment variables
+    while [[ $1 =~ "[A-Za-z_][A-Za-z0-9_]=.*" ]]; do
+      shift
+    done
+
     local cmd=($@)
-    local cmds=(htop man screen ssh streamlit tmux top uvicorn vim)
+    local cmds=(functions-framework htop man screen ssh streamlit tmux top uvicorn vim)
     if (( ${cmds[(Ie)$1]} )); then
       return 0
     elif (( ${cmd[(Ie)less]} )); then
