@@ -34,7 +34,10 @@ telegram_precmd_notify() {
     # Pop sudo and its arguments
     if [[ $1 == "sudo" ]]; then
       shift
-      local args=(-C -D -g -h --host -p --prompt -R --chroot -T --command-timeout -u --user -U --other-user)
+      local args=(
+        -C -D -g -h --host -p --prompt -R --chroot -T --command-timeout -u --user -U 
+        --other-user
+      )
       while [[ $1 == -* ]]; do
         if (( ${args[(Ie)$1]} )); then
           shift
@@ -49,11 +52,20 @@ telegram_precmd_notify() {
     done
 
     local cmd=($@)
-    local cmds=(functions-framework htop man screen ssh streamlit tmux top uvicorn vim)
+    local cmds=(
+      bash functions-framework htop man screens sh ssh streamlit tmux top uvicorn vim
+      zsh
+    )
     if (( ${cmds[(Ie)$1]} )); then
       return 0
     elif (( ${cmd[(Ie)less]} )); then
       return 0
+    elif [[ $1 == "docker" ]]; then
+      if [[ $2 == "run" && $3 == "-it" ]]; then
+        return 0
+      elif [[ $2 == "exec" && $3 == "-it" ]]; then
+        return 0
+      fi
     elif [[ $1 == "git" ]]; then
       local subcmds=(commit dag diff log)
       if (( ${subcmds[(Ie)$2]} )); then
