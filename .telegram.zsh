@@ -53,8 +53,8 @@ telegram_precmd_notify() {
 
     local cmd=($@)
     local cmds=(
-      bash functions-framework htop man screens sh ssh streamlit tmux top uvicorn vim
-      zsh
+      bash functions-framework htop kubectl man screens sh ssh streamlit tmux top
+      uvicorn vim zsh
     )
     if (( ${cmds[(Ie)$1]} )); then
       return 0
