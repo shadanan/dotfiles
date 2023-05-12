@@ -57,36 +57,11 @@ telegram_precmd_notify() {
     done
 
     local cmd=($@)
-    local cmds=(
-      bash functions-framework htop kubectl man screens sh ssh streamlit tmux top
-      uvicorn vim zsh
-    )
+    local cmds=(bash functions-framework htop man sh ssh streamlit tmux top vim zsh)
     if (( ${cmds[(Ie)$1]} )); then
       return 0
     elif (( ${cmd[(Ie)less]} )); then
       return 0
-    elif [[ $1 == "docker" ]]; then
-      if [[ $2 == "run" && $3 == "-it" ]]; then
-        return 0
-      elif [[ $2 == "exec" && $3 == "-it" ]]; then
-        return 0
-      fi
-    elif [[ $1 == "git" ]]; then
-      local subcmds=(commit dag diff log)
-      if (( ${subcmds[(Ie)$2]} )); then
-        return 0
-      fi
-    elif [[ $1 == "bazel" ]]; then
-      local subcmds=(run)
-      if (( ${subcmds[(Ie)$2]} )); then
-        return 0
-      fi
-    elif [[ $1 == "npm" ]]; then
-      if [[ $2 == "run" && $3 == "dev" ]]; then
-        return 0
-      elif [[ $2 == "start" ]]; then
-        return 0
-      fi
     fi
 
     return 1
