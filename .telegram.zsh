@@ -27,6 +27,11 @@ telegram_precmd_notify() {
   fi
   unset telegram_notify_cmd
 
+  # Don't notify if status is user interrupted
+  if [[ $exit_status == "130" ]]; then
+    return 0
+  fi
+
   # Get the last command and its duration
   local -a stats=( $(fc -Dl -1) )
 
@@ -104,7 +109,7 @@ telegram_precmd_notify() {
   # Notify if the command took longer than 2 minutes
   if (( seconds >= 120 )); then
     local emoji=$([ $exit_status -ne 0 ] && echo "❌" || echo "✅")
-    local msg="*${stats[2]}* \\- \`${stats[3,-1]}\`"
+    local msg="*${stats[2]}* \[${exit_status}\] \\- \`${stats[3,-1]}\`"
     telegram "$msg" "$emoji"
   fi
 

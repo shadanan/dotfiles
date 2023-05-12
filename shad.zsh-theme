@@ -21,6 +21,10 @@ function prompt_char {
 	if [ $UID -eq 0 ]; then echo "%{$fg[red]%}#%{$reset_color%}"; else echo $; fi
 }
 
+function status_code {
+	echo "%{$fg[red]%}%(?..%? )%{$reset_color%}"
+}
+
 function ruby_name {
 	if ! [ -z "$RUBY_ENGINE" ]; then
 		echo "%{$fg[red]%}${RUBY_ENGINE##*/}-${RUBY_VERSION##*/}%{$reset_color%}|"
@@ -50,4 +54,4 @@ function tool_status {
 }
 
 PROMPT='%{$fg[magenta]%}%n%{$reset_color%}@%{$fg[yellow]%}%m%{$reset_color%}:%{$fg_bold[blue]%}%~%{$reset_color%} $(gitprompt)
-%{$fg[green]%}%D{%Y-%m-%d %H:%M:%S}%{$reset_color%} [$(tool_status)%{%B%F{yellow}%}%!%{%f%k%b%}] $(prompt_char) '
+%{$fg[green]%}%D{%Y-%m-%d %H:%M:%S}%{$reset_color%} [$(tool_status)%{%B%F{yellow}%}%!%{%f%k%b%}] $(status_code)$(prompt_char) '
