@@ -10,7 +10,7 @@ ZSH_THEME_GIT_PROMPT_UPSTREAM_PREFIX="%{$fg[red]%}(%{$fg[yellow]%}"
 ZSH_THEME_GIT_PROMPT_UPSTREAM_SUFFIX="%{$fg[red]%})"
 ZSH_THEME_GIT_PROMPT_BEHIND="↓"
 ZSH_THEME_GIT_PROMPT_AHEAD="↑"
-ZSH_THEME_GIT_PROMPT_UNMERGED="%{$fg[red]%}✖"
+ZSH_THEME_GIT_PROMPT_UNMERGED="%{$fg[red]%}✗"
 ZSH_THEME_GIT_PROMPT_STAGED="%{$fg[blue]%}●"
 ZSH_THEME_GIT_PROMPT_UNSTAGED="%{$fg[red]%}✚"
 ZSH_THEME_GIT_PROMPT_UNTRACKED="…"
@@ -19,10 +19,6 @@ ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg_bold[green]%}✔"
 
 function prompt_char {
 	if [ $UID -eq 0 ]; then echo "%{$fg[red]%}#%{$reset_color%}"; else echo $; fi
-}
-
-function status_code {
-	echo "%{$fg[red]%}%(?..%? )%{$reset_color%}"
 }
 
 function ruby_name {
@@ -54,4 +50,4 @@ function tool_status {
 }
 
 PROMPT='%{$fg[magenta]%}%n%{$reset_color%}@%{$fg[yellow]%}%m%{$reset_color%}:%{$fg_bold[blue]%}%~%{$reset_color%} $(gitprompt)
-%{$fg[green]%}%D{%Y-%m-%d %H:%M:%S}%{$reset_color%} [$(tool_status)%{%B%F{yellow}%}%!%{%f%k%b%}] $(status_code)$(prompt_char) '
+%{$fg[green]%}%D{%Y-%m-%d %H:%M:%S}%{$reset_color%} [$(tool_status)%{%B%F{yellow}%}%!%{%f%k%b%}] $(prompt_char) '
