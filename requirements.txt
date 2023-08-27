@@ -14,7 +14,7 @@ isort
 
 # Data Science
 numpy
-#numba
+numba
 pandas
 pyarrow
 scipy
@@ -30,5 +30,4 @@ bokeh
 plotly
 
 # Machine Learning
-xgboost
 scikit-learn

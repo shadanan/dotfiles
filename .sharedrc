@@ -23,6 +23,11 @@ if [ -d "$HOME/.local/lib/python" ]; then
 	export PYTHONPATH="$HOME/.local/lib/python:$PYTHONPATH"
 fi
 
+# rust
+if [ -d "$HOME/.cargo/bin" ]; then
+  export PATH="$HOME/.cargo/bin:$PATH"
+fi
+
 # homebrew
 if [ -x "$(command -v arch)" ]; then
   if [[ ("$(arch)" == "i386") && (-x "/opt/intelbrew/bin/brew") ]]; then
