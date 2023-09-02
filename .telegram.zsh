@@ -7,8 +7,44 @@ telegram() {
         -d parse_mode="MarkdownV2" \
         -d "text=$2 __$(whoami)@$(hostname -s)__ \\- $1" \
         https://api.telegram.org/bot$TELEGRAM_TOKEN/sendMessage & \
-      ) > /dev/null 2>&1
+    ) > /dev/null 2>&1
   fi
+}
+
+telegram_is_long_running() {
+  # Pop sudo and its arguments
+  if [[ $1 == "sudo" ]]; then
+    shift
+    local args=(
+      -C -D -g -h --host -p --prompt -R --chroot -T --command-timeout -u --user -U 
+      --other-user
+    )
+    while [[ $1 == -* ]]; do
+      if (( ${args[(Ie)$1]} )); then
+        shift
+      fi
+      shift
+    done
+  fi
+
+  # Pop environment variables
+  while [[ $1 =~ "[A-Za-z_][A-Za-z0-9_]=.*" ]]; do
+    shift
+  done
+
+  local cmd=($@)
+  local cmds=(bash functions-framework htop man sh ssh streamlit tmux top vim zsh)
+  if (( ${cmds[(Ie)$1]} )); then
+    return 0
+  elif (( ${cmd[(Ie)less]} )); then
+    return 0
+  elif [[ $1 == "cargo" ]]; then
+    if (( ${cmd[(Ie)dev]} )); then
+      return 0
+    fi
+  fi
+
+  return 1
 }
 
 # Store the command to be executed in a global variable
@@ -35,40 +71,8 @@ telegram_precmd_notify() {
   # Get the last command and its duration
   local -a stats=( $(fc -Dl -1) )
 
-  is_long_running() {
-    # Pop sudo and its arguments
-    if [[ $1 == "sudo" ]]; then
-      shift
-      local args=(
-        -C -D -g -h --host -p --prompt -R --chroot -T --command-timeout -u --user -U 
-        --other-user
-      )
-      while [[ $1 == -* ]]; do
-        if (( ${args[(Ie)$1]} )); then
-          shift
-        fi
-        shift
-      done
-    fi
-
-    # Pop environment variables
-    while [[ $1 =~ "[A-Za-z_][A-Za-z0-9_]=.*" ]]; do
-      shift
-    done
-
-    local cmd=($@)
-    local cmds=(bash functions-framework htop man sh ssh streamlit tmux top vim zsh)
-    if (( ${cmds[(Ie)$1]} )); then
-      return 0
-    elif (( ${cmd[(Ie)less]} )); then
-      return 0
-    fi
-
-    return 1
-  }
-
   # Ignore commands that are expected to be long running
-  if is_long_running ${stats[3,-1]}; then
+  if telegram_is_long_running ${stats[3,-1]}; then
     return 0
   fi
 
