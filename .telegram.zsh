@@ -42,6 +42,11 @@ telegram_is_long_running() {
     if (( ${cmd[(Ie)dev]} )); then
       return 0
     fi
+  elif [[ $1 == "git" ]]; then
+    local subcmds=(commit dag diff log)
+    if (( ${subcmds[(Ie)$2]} )); then
+      return 0
+    fi
   fi
 
   return 1
