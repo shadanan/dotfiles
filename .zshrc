@@ -48,7 +48,7 @@ export ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="shad"
 
 if [ $(zsh --version | cut -d' ' -f2 | cut -d'.' -f1) -gt "4" ]; then
-	plugins+=(zsh-syntax-highlighting)
+	plugins+=(rust zsh-syntax-highlighting)
 fi
 
 # Activate oh-my-zsh
