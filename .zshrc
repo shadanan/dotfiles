@@ -54,6 +54,9 @@ fi
 # Activate oh-my-zsh
 source $ZSH/oh-my-zsh.sh
 
+# Python virtual environment
+source $HOME/.venv.zsh
+
 # Telegram notifier
 source $HOME/.telegram.zsh
 
