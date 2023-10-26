@@ -39,6 +39,10 @@ if [ -x "$(command -v arch)" ]; then
   if [[ -x "/home/linuxbrew/.linuxbrew/bin/brew" ]]; then
     eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
   fi
+
+  if [ -f "$HOME/.local/bin/curl" ]; then
+    export HOMEBREW_CURL_PATH="$HOME/.local/bin/curl"
+  fi
 fi
 
 # conda
