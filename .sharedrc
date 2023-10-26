@@ -174,4 +174,6 @@ if [ "$TERM" = "linux" ]; then
 fi
 
 # Default Editor
-export EDITOR=$(which vim)
+if [ -x "$(command -v vim)" ]; then
+  export EDITOR=$(which vim)
+fi
