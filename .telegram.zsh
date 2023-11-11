@@ -33,7 +33,9 @@ telegram_is_long_running() {
   done
 
   local cmd=($@)
-  local cmds=(bash functions-framework htop man sh ssh streamlit tmux top vim zsh)
+  local cmds=(
+    bash functions-framework groovysh htop man sh ssh streamlit tmux top vim zsh
+  )
   if (( ${cmds[(Ie)$1]} )); then
     return 0
   elif (( ${cmd[(Ie)less]} )); then
@@ -44,6 +46,15 @@ telegram_is_long_running() {
     fi
   elif [[ $1 == "git" ]]; then
     local subcmds=(commit dag diff log)
+    if (( ${subcmds[(Ie)$2]} )); then
+      return 0
+    fi
+  elif [[ $1 == "kubectl" ]]; then
+    if (( ${cmd[(Ie)port-forward]} )); then
+      return 0
+    fi
+  elif [[ $1 == "tsh" ]]; then
+    local subcmds=(ssh)
     if (( ${subcmds[(Ie)$2]} )); then
       return 0
     fi

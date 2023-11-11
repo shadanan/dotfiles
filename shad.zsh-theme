@@ -17,6 +17,22 @@ ZSH_THEME_GIT_PROMPT_UNTRACKED="…"
 ZSH_THEME_GIT_PROMPT_STASHED="%{$fg[blue]%}⚑"
 ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg_bold[green]%}✔"
 
+function exit_status {
+	echo "%(?.%{$fg_bold[green]%}✔.%{$fg_bold[red]%}✗)%{$reset_color%}"
+}
+
+function host_path {
+	echo "%{$fg[magenta]%}%n%{$reset_color%}@%{$fg[yellow]%}%m%{$reset_color%}:%{$fg_bold[blue]%}%~%{$reset_color%}"
+}
+
+function timestamp {
+	echo "%{$fg[green]%}%D{%Y-%m-%d %H:%M:%S}%{$reset_color%}"
+}
+
+function history_index {
+	echo "%{%B%F{yellow}%}%!%{%f%k%b%}"
+}
+
 function prompt_char {
 	if [ $UID -eq 0 ]; then echo "%{$fg[red]%}#%{$reset_color%}"; else echo $; fi
 }
@@ -49,5 +65,5 @@ function tool_status {
 	echo "$(ruby_name)$(venv_name)$(conda_name)$(arch_name)"
 }
 
-PROMPT='%{$fg[magenta]%}%n%{$reset_color%}@%{$fg[yellow]%}%m%{$reset_color%}:%{$fg_bold[blue]%}%~%{$reset_color%} $(gitprompt)
-%{$fg[green]%}%D{%Y-%m-%d %H:%M:%S}%{$reset_color%} [$(tool_status)%{%B%F{yellow}%}%!%{%f%k%b%}] $(prompt_char) '
+PROMPT='$(exit_status) $(host_path) $(gitprompt)
+$(timestamp) [$(tool_status)$(history_index)] $(prompt_char) '
