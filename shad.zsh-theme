@@ -18,7 +18,14 @@ ZSH_THEME_GIT_PROMPT_STASHED="%{$fg[blue]%}⚑"
 ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg_bold[green]%}✔"
 
 function exit_status {
-	echo "%(?.%{$fg_bold[green]%}✔.%{$fg_bold[red]%}✗)%{$reset_color%}"
+	local retval=$?
+	if [ $retval -eq 0 ]; then 
+		echo "%{$fg_bold[green]%}✔%{$reset_color%}"
+	elif [ $retval -eq 130 ]; then
+		echo "%{$fg_bold[yellow]%}⌾%{$reset_color%}"
+	else
+		echo "%{$fg_bold[red]%}✗%{$reset_color%}"
+	fi
 }
 
 function host_path {
