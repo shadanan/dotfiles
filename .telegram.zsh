@@ -71,7 +71,7 @@ telegram_preexec_notify() {
 # Notify telegram on long running commands
 telegram_precmd_notify() {
   # Store the exit status of the last command
-  local exit_status=$?
+  local retval=$?
 
   # Ignore if the command is empty
   if [ -z "$telegram_notify_cmd" ]; then 
@@ -79,8 +79,9 @@ telegram_precmd_notify() {
   fi
   unset telegram_notify_cmd
 
-  # Don't notify if status is user interrupted
-  if [[ $exit_status == "130" ]]; then
+  # Don't notify if status is in ignore list
+  local ignore=($SIGINT $SIGTSTP)
+  if (( ${ignore[(Ie)$retval]} )); then
     return 0
   fi
 
@@ -103,8 +104,8 @@ telegram_precmd_notify() {
 
   # Notify if the command took longer than 2 minutes
   if (( seconds >= 120 )); then
-    local emoji=$([ $exit_status -ne 0 ] && echo "❌" || echo "✅")
-    local msg="*${stats[2]}* \[${exit_status}\] \\- \`${stats[3,-1]}\`"
+    local emoji=$([ $retval -ne 0 ] && echo "❌" || echo "✅")
+    local msg="*${stats[2]}* \[${retval}\] \\- \`${stats[3,-1]}\`"
     telegram "$msg" "$emoji"
   fi
 

@@ -17,15 +17,13 @@ ZSH_THEME_GIT_PROMPT_UNTRACKED="…"
 ZSH_THEME_GIT_PROMPT_STASHED="%{$fg[blue]%}⚑"
 ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg_bold[green]%}✔"
 
-(( SIGSTOP = 128 + $(kill -l TSTP) ))
-
 function exit_status {
 	local retval=$?
 	if [ $retval -eq 0 ]; then 
 		echo "%{$fg_bold[green]%}✔%{$reset_color%}"
-	elif [ $retval -eq 130 ]; then
+	elif [ $retval -eq $SIGINT ]; then
 		echo "%{$fg_bold[yellow]%}⏹%{$reset_color%}"
-	elif [ $retval -eq $SIGSTOP ]; then
+	elif [ $retval -eq $SIGTSTP ]; then
 		echo "%{$fg_bold[yellow]%}⏸%{$reset_color%}"
 	else
 		echo "%{$fg_bold[red]%}✗%{$reset_color%}"

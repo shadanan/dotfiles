@@ -7,6 +7,10 @@ ZSH_DISABLE_COMPFIX=true
 # Disable magic functions so that URLs paste properly
 DISABLE_MAGIC_FUNCTIONS=true
 
+# Set variables for prompt
+(( SIGINT = 128 + $(kill -l INT) ))
+(( SIGTSTP = 128 + $(kill -l TSTP) ))
+
 # Set history file
 export HISTFILE=~/.zsh_history
 
