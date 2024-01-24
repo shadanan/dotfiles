@@ -22,10 +22,8 @@ autoload -U up-line-or-beginning-search
 autoload -U down-line-or-beginning-search
 zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
-bindkey "^[[A" up-line-or-beginning-search # Up
-bindkey "$terminfo[kcuu1]" history-beginning-search-backward-end
-bindkey "^[[B" down-line-or-beginning-search # Down
-bindkey "$terminfo[kcud1]" history-beginning-search-forward-end
+bindkey "^[[A" up-line-or-beginning-search
+bindkey "^[[B" down-line-or-beginning-search
 
 # gcloud zsh completion
 if [ -x "$(command -v brew)" ]; then
