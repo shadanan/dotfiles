@@ -31,7 +31,7 @@ function exit_status {
 }
 
 function host {
-	echo "%{$fg[magenta]%}%n%{$reset_color%}@%{$fg[yellow]%}%m%{$reset_color%}"
+	echo "%{$fg_bold[cyan]%}%n%{$reset_color%}@%{$fg_bold[green]%}%m%{$reset_color%}"
 }
 
 function path {
@@ -39,11 +39,11 @@ function path {
 }
 
 function timestamp {
-	echo "%{$fg[green]%}%D{%Y-%m-%d %H:%M:%S}%{$reset_color%}"
+	echo "%{$fg_bold[black]%}%D{%Y-%m-%d %H:%M:%S}%{$reset_color%}"
 }
 
 function history_index {
-	echo "%{%B%F{yellow}%}%!%{%f%k%b%}"
+	echo "%{$fg[yellow]%}%!%{$reset_color%}"
 }
 
 function prompt_char {
