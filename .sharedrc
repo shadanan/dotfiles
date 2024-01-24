@@ -11,6 +11,9 @@ if [ $(git rev-list --left-right origin...HEAD | wc -l) -ne "0" ]; then
 fi
 popd > /dev/null
 
+# Enable colors in ls
+alias ls='ls --color=auto'
+
 if [ -d "$HOME/.local/bin" ]; then
 	export PATH="$HOME/.local/bin:$PATH"
 fi

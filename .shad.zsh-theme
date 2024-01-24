@@ -30,8 +30,12 @@ function exit_status {
 	fi
 }
 
-function host_path {
-	echo "%{$fg[magenta]%}%n%{$reset_color%}@%{$fg[yellow]%}%m%{$reset_color%}:%{$fg_bold[blue]%}%~%{$reset_color%}"
+function host {
+	echo "%{$fg[magenta]%}%n%{$reset_color%}@%{$fg[yellow]%}%m%{$reset_color%}"
+}
+
+function path {
+	echo "%{$fg_bold[blue]%}%~%{$reset_color%}"
 }
 
 function timestamp {
@@ -43,7 +47,11 @@ function history_index {
 }
 
 function prompt_char {
-	if [ $UID -eq 0 ]; then echo "%{$fg[red]%}#%{$reset_color%}"; else echo $; fi
+	if [ $UID -eq 0 ]; then 
+		echo "%{$fg[red]%}#%{$reset_color%}"
+	else
+		echo "%{$fg_bold[white]%}$%{$reset_color%}"
+	fi
 }
 
 function ruby_name {
@@ -74,5 +82,10 @@ function tool_status {
 	echo "$(ruby_name)$(venv_name)$(conda_name)$(arch_name)"
 }
 
-PROMPT='$(exit_status) $(host_path) $(gitprompt)
+if [[ "$BASIC_PROMPT" == "true" ]]; then
+	PROMPT="$(path) $(prompt_char) "
+	return
+fi
+
+PROMPT='$(exit_status) $(host):$(path) $(gitprompt)
 $(timestamp) [$(tool_status)$(history_index)] $(prompt_char) '

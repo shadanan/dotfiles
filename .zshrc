@@ -1,12 +1,3 @@
-# Disable Oh My Zsh auto update
-DISABLE_AUTO_UPDATE=true
-
-# Ignore insecure completion-dependent directories
-ZSH_DISABLE_COMPFIX=true
-
-# Disable magic functions so that URLs paste properly
-DISABLE_MAGIC_FUNCTIONS=true
-
 # Set variables for prompt
 (( SIGINT = 128 + $(kill -l INT) ))
 (( SIGTSTP = 128 + $(kill -l TSTP) ))
@@ -23,7 +14,20 @@ setopt sharehistory
 setopt incappendhistory
 setopt histIgnoreSpace
 
-# gcloud
+# Enable tab highlighting
+zstyle ':completion:*' menu select
+
+# Up and down arrow search
+autoload -U up-line-or-beginning-search
+autoload -U down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+bindkey "^[[A" up-line-or-beginning-search # Up
+bindkey "$terminfo[kcuu1]" history-beginning-search-backward-end
+bindkey "^[[B" down-line-or-beginning-search # Down
+bindkey "$terminfo[kcud1]" history-beginning-search-forward-end
+
+# gcloud zsh completion
 if [ -x "$(command -v brew)" ]; then
     if [ -f "$(brew --prefix)/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc" ]; then
         source "$(brew --prefix)/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
@@ -37,37 +41,18 @@ if [ -x "$(command -v brew)" ]; then
   compinit -u
 fi
 
-# 1password cli zsh completion
-if [ -x "$(command -v op)" ]; then
-  eval "$(op completion zsh)"; compdef _op op
-fi
-
 # Activate Shad's zsh git prompt
 source "$HOME/.zsh-git-prompt/git-prompt.zsh"
+source "$HOME/.shad.zsh-theme"
 
-# Path to oh-my-zsh installation
-export ZSH=$HOME/.oh-my-zsh
-
-# Set oh-my-zsh theme
-ZSH_THEME="shad"
-
-if [ $(zsh --version | cut -d' ' -f2 | cut -d'.' -f1) -gt "4" ]; then
-	plugins+=(rust zsh-syntax-highlighting)
-fi
-
-# Activate oh-my-zsh
-source $ZSH/oh-my-zsh.sh
+# Activate zsh syntax highlighting
+source "$HOME/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 
 # Python virtual environment
 source $HOME/.venv.zsh
 
 # Telegram notifier
 source $HOME/.telegram.zsh
-
-# Enable Ctrl-x-e to edit command line
-autoload -U edit-command-line
-zle -N edit-command-line
-bindkey '^x^e' edit-command-line
 
 # Configure venv
 export VIRTUAL_ENV_DISABLE_PROMPT=0

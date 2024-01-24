@@ -2,10 +2,9 @@
 	name = Shad Sharma
 	email = shadanan@gmail.com
 [push]
-    default = current
+	default = current
 	autoSetupRemote = true
 [core]
-	excludesfile = ~/.gitignore_global
 	pager = less -FMRiX
 [color]
 	ui = auto
@@ -20,7 +19,7 @@
 	process = git-lfs filter-process
 	required = true
 [include]
-    path = ~/.gitconfigenv
+	path = ~/.gitconfigenv
 [diff "jupyternotebook"]
 	command = git-nbdiffdriver diff
 [merge "jupyternotebook"]

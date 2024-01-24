@@ -30,11 +30,8 @@ symlink "$DOTFILES_DIR/.zshrc" "$HOME/.zshrc"
 symlink "$DOTFILES_DIR/.telegram.zsh" "$HOME/.telegram.zsh"
 symlink "$DOTFILES_DIR/.venv.zsh" "$HOME/.venv.zsh"
 symlink "$DOTFILES_DIR/git-prompt.zsh-master" "$HOME/.zsh-git-prompt"
-symlink "$DOTFILES_DIR/ohmyzsh-master" "$HOME/.oh-my-zsh"
-mkdir -p "$HOME/.oh-my-zsh/custom/plugins"
-symlink "$DOTFILES_DIR/zsh-syntax-highlighting-master" "$HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting"
-mkdir -p "$HOME/.oh-my-zsh/custom/themes"
-symlink "$DOTFILES_DIR/shad.zsh-theme" "$HOME/.oh-my-zsh/custom/themes/shad.zsh-theme"
+symlink "$DOTFILES_DIR/zsh-syntax-highlighting-master" "$HOME/.zsh-syntax-highlighting"
+symlink "$DOTFILES_DIR/.shad.zsh-theme" "$HOME/.shad.zsh-theme"
 
 # bash
 symlink "$DOTFILES_DIR/.bashrc" "$HOME/.bashrc"
@@ -43,7 +40,6 @@ symlink "$DOTFILES_DIR/bash-git-prompt-master" "$HOME/.bash-git-prompt"
 
 # git
 symlink "$DOTFILES_DIR/.gitconfig" "$HOME/.gitconfig"
-symlink "$DOTFILES_DIR/.gitignore_global" "$HOME/.gitignore_global"
 symlink "$DOTFILES_DIR/.tigrc" "$HOME/.tigrc"
 
 # bin
