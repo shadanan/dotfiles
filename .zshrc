@@ -2,17 +2,14 @@
 (( SIGINT = 128 + $(kill -l INT) ))
 (( SIGTSTP = 128 + $(kill -l TSTP) ))
 
-# Set history file
+# Configure history
 export HISTFILE=~/.zsh_history
+export SAVEHIST=10000
+setopt SHARE_HISTORY
+setopt HIST_IGNORE_SPACE
 
 # Source shared environment
 source ~/.sharedrc
-
-# Configure history
-setopt appendhistory
-setopt sharehistory
-setopt incappendhistory
-setopt histIgnoreSpace
 
 # Enable tab highlighting
 zstyle ':completion:*' menu select
