@@ -30,11 +30,16 @@ if [ -x "$(command -v brew)" ]; then
     fi
 fi
 
+# Custom shell functions
+if [ -d "$HOME/.zfunc" ]; then
+  FPATH="$HOME/.zfunc:${FPATH}"
+  autoload -Uz compinit && compinit -u
+fi
+
 # Homebrew zsh completion
 if [ -x "$(command -v brew)" ]; then
-  FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
-  autoload -Uz compinit
-  compinit -u
+  FPATH="$(brew --prefix)/share/zsh/site-functions:$FPATH"
+  autoload -Uz compinit && compinit -u
 fi
 
 # Activate Shad's zsh git prompt
@@ -43,9 +48,6 @@ source "$HOME/.shad.zsh-theme"
 
 # Activate zsh syntax highlighting
 source "$HOME/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
-
-# Python virtual environment
-source $HOME/.venv.zsh
 
 # Telegram notifier
 source $HOME/.telegram.zsh

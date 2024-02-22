@@ -28,7 +28,6 @@ symlink "$DOTFILES_DIR/.profile" "$HOME/.profile"
 # zsh
 symlink "$DOTFILES_DIR/.zshrc" "$HOME/.zshrc"
 symlink "$DOTFILES_DIR/.telegram.zsh" "$HOME/.telegram.zsh"
-symlink "$DOTFILES_DIR/.venv.zsh" "$HOME/.venv.zsh"
 symlink "$DOTFILES_DIR/git-prompt.zsh-master" "$HOME/.zsh-git-prompt"
 symlink "$DOTFILES_DIR/zsh-syntax-highlighting-master" "$HOME/.zsh-syntax-highlighting"
 symlink "$DOTFILES_DIR/.shad.zsh-theme" "$HOME/.shad.zsh-theme"
