@@ -27,6 +27,16 @@ telegram_is_long_running() {
     done
   fi
 
+  # Pop npm run
+  if [[ $1 == "npm" && $2 == "run" ]]; then
+    shift 2
+  fi
+
+  # Pop poetry run
+  if [[ $1 == "poetry" && $2 == "run" ]]; then
+    shift 2
+  fi
+
   # Pop environment variables
   while [[ $1 =~ "[A-Za-z_][A-Za-z0-9_]=.*" ]]; do
     shift
@@ -34,16 +44,12 @@ telegram_is_long_running() {
 
   local cmd=($@)
   local cmds=(
-    bash functions-framework groovysh htop man sh ssh streamlit tmux top vim zsh
+    bash dev functions-framework htop man sh ssh streamlit tmux top uvicorn vim zsh
   )
   if (( ${cmds[(Ie)$1]} )); then
     return 0
   elif (( ${cmd[(Ie)less]} )); then
     return 0
-  elif [[ $1 == "cargo" ]]; then
-    if (( ${cmd[(Ie)dev]} )); then
-      return 0
-    fi
   elif [[ $1 == "git" ]]; then
     local subcmds=(commit dag diff log)
     if (( ${subcmds[(Ie)$2]} )); then

@@ -2397,6 +2397,8 @@
 			<string>kNextWindowPointerAction</string>
 		</dict>
 	</dict>
+	<key>Print In Black And White</key>
+	<true/>
 	<key>SmartPlacement</key>
 	<false/>
 	<key>SoundForEsc</key>

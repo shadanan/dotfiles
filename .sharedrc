@@ -1,11 +1,14 @@
 #!/bin/bash
 
 pushd "$HOME/.dotfiles" > /dev/null
-(git pull -q --ff-only &) > /dev/null 2>&1
+(git fetch -q &) 1> /dev/null
 if [ $(git rev-list --left-right origin...HEAD | wc -l) -ne "0" ]; then
   echo "╭───────────────────────────────────────────╮"
   echo "│                                           │"
   echo "│    New version of \033[1;32m.dotfiles\033[0m available!    │"
+  echo "│                                           │"
+  echo "│  To Update:                               │"
+  echo "│  cd ~/.dotfiles && git pull && ./install  │"
   echo "│                                           │"
   echo "╰───────────────────────────────────────────╯"
 fi
