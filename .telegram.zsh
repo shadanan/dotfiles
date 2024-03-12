@@ -11,64 +11,6 @@ telegram() {
   fi
 }
 
-telegram_is_long_running() {
-  # Pop sudo and its arguments
-  if [[ $1 == "sudo" ]]; then
-    shift
-    local args=(
-      -C -D -g -h --host -p --prompt -R --chroot -T --command-timeout -u --user -U 
-      --other-user
-    )
-    while [[ $1 == -* ]]; do
-      if (( ${args[(Ie)$1]} )); then
-        shift
-      fi
-      shift
-    done
-  fi
-
-  # Pop npm run
-  if [[ $1 == "npm" && $2 == "run" ]]; then
-    shift 2
-  fi
-
-  # Pop poetry run
-  if [[ $1 == "poetry" && $2 == "run" ]]; then
-    shift 2
-  fi
-
-  # Pop environment variables
-  while [[ $1 =~ "[A-Za-z_][A-Za-z0-9_]=.*" ]]; do
-    shift
-  done
-
-  local cmd=($@)
-  local cmds=(
-    bash dev functions-framework htop man sh ssh streamlit tmux top uvicorn vim zsh
-  )
-  if (( ${cmds[(Ie)$1]} )); then
-    return 0
-  elif (( ${cmd[(Ie)less]} )); then
-    return 0
-  elif [[ $1 == "git" ]]; then
-    local subcmds=(commit dag diff log)
-    if (( ${subcmds[(Ie)$2]} )); then
-      return 0
-    fi
-  elif [[ $1 == "kubectl" ]]; then
-    if (( ${cmd[(Ie)port-forward]} )); then
-      return 0
-    fi
-  elif [[ $1 == "tsh" ]]; then
-    local subcmds=(ssh)
-    if (( ${subcmds[(Ie)$2]} )); then
-      return 0
-    fi
-  fi
-
-  return 1
-}
-
 # Store the command to be executed in a global variable
 telegram_preexec_notify() {
   telegram_notify_cmd=$1
@@ -94,27 +36,36 @@ telegram_precmd_notify() {
   # Get the last command and its duration
   local -a stats=( $(fc -Dl -1) )
 
-  # Ignore commands that are expected to be long running
-  if telegram_is_long_running ${stats[3,-1]}; then
-    return 0
-  fi
-
   # Calculate the duration of the last command
   local -a time=( "${(s.:.)stats[2]}" )
-  local -i seconds=0 mult=1
+  local -i elapsed=0 mult=1
   while (( $#time[@] )); do
-    (( seconds += mult * time[-1] ))
+    (( elapsed += mult * time[-1] ))
     (( mult *= 60 ))
     shift -p time
   done
 
-  # Notify if the command took longer than 2 minutes
-  if (( seconds >= 120 )); then
-    local emoji=$([ $retval -ne 0 ] && echo "❌" || echo "✅")
-    local msg="*${stats[2]}* \[${retval}\] \\- \`${stats[3,-1]}\`"
-    telegram "$msg" "$emoji"
+  # Ignore commands that took less than 30 seconds
+  if (( elapsed < 30 )); then
+    return 0
   fi
 
+  # Calculate the user idle time
+  local -i idle=0
+  if [ -x "$(command -v ioreg)" ]; then
+    idle=$(ioreg -c IOHIDSystem | awk '/HIDIdleTime/ {print $NF/1000000000; exit}')
+  else
+    return 0
+  fi
+
+  # Ignore commands if the user was idle for less than 30 seconds
+  if (( idle < 30 )); then
+    return 0
+  fi
+
+  local emoji=$([ $retval -ne 0 ] && echo "❌" || echo "✅")
+  local msg="*${stats[2]}* \[${retval}\] \\- \`${stats[3,-1]}\`"
+  telegram "$msg" "$emoji"
   return 0
 }
 
