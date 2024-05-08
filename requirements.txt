@@ -1,15 +1,11 @@
 # Core Tools
 pip
-requests
+httpx
 tqdm
 
 # JupyterLab
 jupyterlab
-jupyterlab_code_formatter
-jupyterlab_sublime
 ipywidgets
-black
-isort
 
 # Data Science
 numpy
