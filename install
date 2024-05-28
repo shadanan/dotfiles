@@ -6,23 +6,24 @@ install_from_github() {
 	# $1 is of the form: ohmyzsh/ohmyzsh
 	FILE=$(echo $1 | cut -d'/' -f2)
 	echo "Downloading https://github.com/$1/"
-	curl -# -L "https://github.com/$1/archive/master.zip" -o "$FILE.zip"
-	rm -rf "$FILE-master"
+	curl -# -L "https://github.com/$1/archive/$2.zip" -o "$FILE.zip"
+	rm -rf "$FILE-$2"
 	unzip -q "$FILE.zip"
 }
 
-install_from_github "woefe/git-prompt.zsh"
-install_from_github "zsh-users/zsh-syntax-highlighting"
-install_from_github "magicmonty/bash-git-prompt"
-install_from_github "tpope/vim-pathogen"
-install_from_github "easymotion/vim-easymotion"
-install_from_github "ConradIrwin/vim-bracketed-paste"
+install_from_github "woefe/git-prompt.zsh" master
+install_from_github "zsh-users/zsh-syntax-highlighting" master
+install_from_github "magicmonty/bash-git-prompt" master
+install_from_github "tpope/vim-pathogen" master
+install_from_github "easymotion/vim-easymotion" master
+install_from_github "ConradIrwin/vim-bracketed-paste" master
 
 . makelinks
 
 # Command Line Fuzzy Finder
-install_from_github "junegunn/fzf"
+install_from_github "junegunn/fzf" master
 fzf-master/install --all
+install_from_github "junegunn/fzf-git.sh" main
 
 # tmux Plugin Manager
 mkdir -p "$HOME/.tmux/plugins"

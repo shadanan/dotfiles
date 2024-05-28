@@ -60,6 +60,7 @@ export VIRTUAL_ENV_DISABLE_PROMPT=0
 
 # Enable command-line fuzzy finder (https://github.com/junegunn/fzf)
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -d ~/.fzf-git.sh ] && source ~/.fzf-git.sh/fzf-git.sh
 
 # Source local shared environment
 if [ -f "$HOME/.sharedenv" ]; then
