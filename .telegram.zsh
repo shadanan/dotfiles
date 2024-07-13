@@ -1,7 +1,7 @@
 telegram() {
   if [ -n "$TELEGRAM_TOKEN" ] && [ -n "$TELEGRAM_CHAT_ID" ]; then
     (
-      local message=$(echo "$2 __$(whoami)@$(hostname -s)__ - $1" | sed 's/-/\\-/g')
+      local message=$(echo "$2 __$(whoami | sed 's/-/\\-/g')@$(hostname -s | sed 's/-/\\-/g')__ \\- $1")
       curl -s \
         -X POST \
         -d chat_id="$TELEGRAM_CHAT_ID" \
