@@ -1,11 +1,12 @@
 telegram() {
   if [ -n "$TELEGRAM_TOKEN" ] && [ -n "$TELEGRAM_CHAT_ID" ]; then
     (
+      local message=$(echo "$2 __$(whoami)@$(hostname -s)__ - $1" | sed 's/-/\\-/g')
       curl -s \
         -X POST \
-        -d "chat_id=$TELEGRAM_CHAT_ID" \
+        -d chat_id="$TELEGRAM_CHAT_ID" \
         -d parse_mode="MarkdownV2" \
-        -d "text=$2 __$(whoami)@$(hostname -s)__ \\- $1" \
+        -d text="$message" \
         https://api.telegram.org/bot$TELEGRAM_TOKEN/sendMessage & \
     ) > /dev/null 2>&1
   fi
