@@ -1,15 +1,19 @@
 telegram() {
   if [ -n "$TELEGRAM_TOKEN" ] && [ -n "$TELEGRAM_CHAT_ID" ]; then
     (
-      local message=$(echo "$2 __$(whoami | sed 's/-/\\-/g')@$(hostname -s | sed 's/-/\\-/g')__ \\- $1")
+      local sig="__$(whoami | telegram_escape)@$(hostname -s | telegram_escape)__ \\-"
       curl -s \
         -X POST \
         -d chat_id="$TELEGRAM_CHAT_ID" \
         -d parse_mode="MarkdownV2" \
-        -d text="$message" \
+        -d text="$2 $sig $1" \
         https://api.telegram.org/bot$TELEGRAM_TOKEN/sendMessage & \
     ) > /dev/null 2>&1
   fi
+}
+
+telegram_escape() {
+  sed -E 's/([][_*()~`>#+-=|{}.!])/\\\1/g'
 }
 
 # Store the command to be executed in a global variable
