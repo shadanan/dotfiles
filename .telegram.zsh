@@ -7,8 +7,8 @@ telegram() {
         -d chat_id="$TELEGRAM_CHAT_ID" \
         -d parse_mode="MarkdownV2" \
         -d text="$2 $sig $1" \
-        https://api.telegram.org/bot$TELEGRAM_TOKEN/sendMessage & \
-    ) > /dev/null 2>&1
+        https://api.telegram.org/bot$TELEGRAM_TOKEN/sendMessage \
+    )
   fi
 }
 
@@ -70,7 +70,7 @@ telegram_precmd_notify() {
 
   local emoji=$([ $retval -ne 0 ] && echo "❌" || echo "✅")
   local msg="*${stats[2]}* \[${retval}\] \\- \`${stats[3,-1]}\`"
-  telegram "$msg" "$emoji"
+  (telegram "$msg" "$emoji" &) > /dev/null 2>&1
   return 0
 }
 
