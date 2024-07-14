@@ -3,17 +3,16 @@
 pushd $( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
 install_from_github() {
-	# $1 is of the form: ohmyzsh/ohmyzsh
-	FILE=$(echo $1 | cut -d'/' -f2)
-	echo "Downloading https://github.com/$1/"
-	curl -# -L "https://github.com/$1/archive/$2.zip" -o "$FILE.zip"
-	rm -rf "$FILE-$2"
-	unzip -q "$FILE.zip"
+  # $1 is of the form: ohmyzsh/ohmyzsh
+  FILE=$(echo $1 | cut -d'/' -f2)
+  echo "Downloading https://github.com/$1/"
+  curl -# -L "https://github.com/$1/archive/$2.zip" -o "$FILE.zip"
+  rm -rf "$FILE-$2"
+  unzip -q "$FILE.zip"
 }
 
 install_from_github "woefe/git-prompt.zsh" master
 install_from_github "zsh-users/zsh-syntax-highlighting" master
-install_from_github "magicmonty/bash-git-prompt" master
 install_from_github "tpope/vim-pathogen" master
 install_from_github "easymotion/vim-easymotion" master
 install_from_github "ConradIrwin/vim-bracketed-paste" master

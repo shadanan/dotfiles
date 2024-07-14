@@ -22,10 +22,12 @@ symlink "$DOTFILES_DIR/vim-easymotion-master" "$HOME/.vim/bundle/vim-easymotion"
 symlink "$DOTFILES_DIR/.screenrc" "$HOME/.screenrc"
 
 # shell
+symlink "$DOTFILES_DIR/.environment" "$HOME/.environment"
 symlink "$DOTFILES_DIR/.sharedrc" "$HOME/.sharedrc"
 symlink "$DOTFILES_DIR/.profile" "$HOME/.profile"
 
 # zsh
+symlink "$DOTFILES_DIR/.zshenv" "$HOME/.zshenv"
 symlink "$DOTFILES_DIR/.zshrc" "$HOME/.zshrc"
 symlink "$DOTFILES_DIR/.telegram.zsh" "$HOME/.telegram.zsh"
 symlink "$DOTFILES_DIR/git-prompt.zsh-master" "$HOME/.zsh-git-prompt"
@@ -35,7 +37,6 @@ symlink "$DOTFILES_DIR/.shad.zsh-theme" "$HOME/.shad.zsh-theme"
 # bash
 symlink "$DOTFILES_DIR/.bashrc" "$HOME/.bashrc"
 symlink "$DOTFILES_DIR/.bash_profile" "$HOME/.bash_profile"
-symlink "$DOTFILES_DIR/bash-git-prompt-master" "$HOME/.bash-git-prompt"
 
 # git
 symlink "$DOTFILES_DIR/.gitconfig" "$HOME/.gitconfig"

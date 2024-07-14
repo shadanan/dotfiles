@@ -1,0 +1,66 @@
+# Source local environment
+if [ -f "$HOME/.sharedenv" ]; then
+  source "$HOME/.sharedenv"
+fi
+
+if [ -d "$HOME/.local/bin" ]; then
+  export PATH="$HOME/.local/bin:$PATH"
+fi
+
+if [ -d "$HOME/.local/lib" ]; then
+  export LD_LIBRARY_PATH="$HOME/.local/lib:$LD_LIBRARY_PATH"
+fi
+
+if [ -d "$HOME/.local/lib/python" ]; then
+  export PYTHONPATH="$HOME/.local/lib/python:$PYTHONPATH"
+fi
+
+# homebrew
+[ -x "/opt/homebrew/bin/brew" ] && eval "$(/opt/homebrew/bin/brew shellenv)"
+[ -x "/home/linuxbrew/.linuxbrew/bin/brew" ] && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+if [ -x "$(command -v brew)" ]; then
+  # conda
+  if [ -f "$(brew --prefix)/Caskroom/miniconda/base/etc/profile.d/conda.sh" ]; then
+    source "$(brew --prefix)/Caskroom/miniconda/base/etc/profile.d/conda.sh"
+  fi
+
+  # ruby
+  if [ -d "$(brew --prefix)/opt/ruby/bin" ]; then
+    export PATH="$(brew --prefix)/opt/ruby/bin:$PATH"
+  fi
+
+  # chruby
+  if [ -d "$(brew --prefix)/opt/chruby" ]; then
+    source $(brew --prefix)/opt/chruby/share/chruby/chruby.sh
+    source $(brew --prefix)/opt/chruby/share/chruby/auto.sh
+  fi
+
+  # openjdk
+  if [ -d "$(brew --prefix)/opt/openjdk/bin" ]; then
+    export PATH="$(brew --prefix)/opt/openjdk/bin:$PATH"
+  fi
+fi
+
+# go
+if [ -x "$(command -v go)" ]; then
+  export GOPATH=$(go env GOPATH)
+  export PATH="$GOPATH/bin:$PATH"
+fi
+
+# java
+if [ -f /usr/libexec/java_home ]; then
+  export JAVA_HOME=`/usr/libexec/java_home 2> /dev/null`
+fi
+
+# nvm
+if [ -d "$HOME/.nvm" ]; then
+  export NVM_DIR="$HOME/.nvm"
+  [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+  [ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"
+fi
+
+# rust
+if [ -d "$HOME/.cargo/bin" ]; then
+  export PATH="$HOME/.cargo/bin:$PATH"
+fi
