@@ -1,6 +1,12 @@
 # Source local environment
 if [ -f "$HOME/.sharedenv" ]; then
+  echo "~/.sharedenv is deprecated - rename it to ~/.localenv:"
+  echo "  mv ~/.sharedenv ~/.localenv"
   source "$HOME/.sharedenv"
+fi
+
+if [ -f "$HOME/.localenv" ]; then
+  source "$HOME/.localenv"
 fi
 
 if [ -d "$HOME/.local/bin" ]; then
