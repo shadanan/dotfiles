@@ -1,4 +1,4 @@
 # Source local shared environment
-if [ -f "$HOME/.sharedenv" ]; then
-	source "$HOME/.sharedenv"
+if [ -f "$HOME/.environment" ]; then
+  source "$HOME/.environment"
 fi

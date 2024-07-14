@@ -1,3 +1,8 @@
+# Source shared config
+if [ -f "$HOME/.sharedrc" ]; then
+  source ~/.sharedrc
+fi
+
 # Set variables for prompt
 (( SIGINT = 128 + $(kill -l INT) ))
 (( SIGTSTP = 128 + $(kill -l TSTP) ))
@@ -9,9 +14,6 @@ export HISTSIZE=10000
 setopt HIST_IGNORE_SPACE
 setopt HIST_VERIFY
 setopt SHARE_HISTORY
-
-# Source shared environment
-source ~/.sharedrc
 
 # Enable tab highlighting
 zstyle ':completion:*' menu select
@@ -28,9 +30,9 @@ bindkey "${terminfo[kcud1]}" down-line-or-beginning-search
 
 # gcloud zsh completion
 if [ -x "$(command -v brew)" ]; then
-    if [ -f "$(brew --prefix)/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc" ]; then
-        source "$(brew --prefix)/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
-    fi
+  if [ -f "$(brew --prefix)/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc" ]; then
+    source "$(brew --prefix)/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
+  fi
 fi
 
 # Custom shell functions
@@ -53,7 +55,7 @@ source "$HOME/.shad.zsh-theme"
 source "$HOME/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 
 # Telegram notifier
-source $HOME/.telegram.zsh
+source "$HOME/.telegram.zsh"
 
 # Configure venv
 export VIRTUAL_ENV_DISABLE_PROMPT=0
@@ -61,13 +63,3 @@ export VIRTUAL_ENV_DISABLE_PROMPT=0
 # Enable command-line fuzzy finder (https://github.com/junegunn/fzf)
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 [ -d ~/.fzf-git.sh ] && source ~/.fzf-git.sh/fzf-git.sh
-
-# Source local shared environment
-if [ -f "$HOME/.sharedenv" ]; then
-	source "$HOME/.sharedenv"
-fi
-
-# Source local zsh environment
-if [ -f "$HOME/.zshenv" ]; then
-	source "$HOME/.zshenv"
-fi
