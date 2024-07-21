@@ -27,7 +27,6 @@ symlink "$DOTFILES_DIR/.sharedrc" "$HOME/.sharedrc"
 symlink "$DOTFILES_DIR/.profile" "$HOME/.profile"
 
 # zsh
-symlink "$DOTFILES_DIR/.zshenv" "$HOME/.zshenv"
 symlink "$DOTFILES_DIR/.zshrc" "$HOME/.zshrc"
 symlink "$DOTFILES_DIR/.telegram.zsh" "$HOME/.telegram.zsh"
 symlink "$DOTFILES_DIR/git-prompt.zsh-master" "$HOME/.zsh-git-prompt"
