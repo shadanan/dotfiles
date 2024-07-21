@@ -1,3 +1,8 @@
+# Source shared environment
+if [ -f "$HOME/.environment" ]; then
+	source "$HOME/.environment"
+fi
+
 # Source shared config
 if [ -f "$HOME/.sharedrc" ]; then
   source ~/.sharedrc
