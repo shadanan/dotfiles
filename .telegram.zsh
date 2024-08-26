@@ -41,6 +41,9 @@ telegram_precmd_notify() {
   # Get the last command and its duration
   local -a stats=( $(fc -Dl -1) )
 
+  # Override conditional notification if env var is set
+  local notify_override=$(( ${stats[3,-1][(Ie)TELEGRAM_NOTIFY=1]} ? 1 : 0 ))
+
   # Calculate the duration of the last command
   local -a time=( "${(s.:.)stats[2]}" )
   local -i elapsed=0 mult=1
@@ -51,7 +54,7 @@ telegram_precmd_notify() {
   done
 
   # Ignore commands that took less than 30 seconds
-  if (( elapsed < 30 )); then
+  if (( !notify_override && elapsed < 30 )); then
     return 0
   fi
 
@@ -59,12 +62,10 @@ telegram_precmd_notify() {
   local -i idle=0
   if [ -x "$(command -v ioreg)" ]; then
     idle=$(ioreg -c IOHIDSystem | awk '/HIDIdleTime/ {print $NF/1000000000; exit}')
-  else
-    return 0
   fi
 
   # Ignore commands if the user was idle for less than 30 seconds
-  if (( idle < 30 )); then
+  if (( !notify_override && idle < 30 )); then
     return 0
   fi
 
