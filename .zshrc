@@ -14,8 +14,8 @@ fi
 
 # Configure history
 export HISTFILE=~/.zsh_history
-export SAVEHIST=10000
-export HISTSIZE=10000
+export SAVEHIST=1000000
+export HISTSIZE=1000000
 setopt HIST_IGNORE_SPACE
 setopt HIST_VERIFY
 setopt SHARE_HISTORY
