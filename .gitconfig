@@ -4,39 +4,14 @@
 [push]
 	default = current
 	autoSetupRemote = true
-[core]
-	excludesfile = ~/.gitignore_global
-	pager = less -FMRiX
+[pull]
+	rebase = true
+[fetch]
+	prune = true
 [color]
 	ui = auto
 [alias]
 	amend = commit --amend --no-edit
 	dag = log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) -%C(auto)%d%C(reset) %C(bold yellow italic)%s%C(reset)%n%C(bold magenta)➥%C(reset) %C(dim white)%an%C(reset) <%C(ul)%ae%C(reset)> -%C(reset) %C(cyan)%aD%C(reset) %C(green)(%ar)%C(reset)'
-[pull]
-	rebase = true
-[filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
 [include]
-	path = ~/.gitconfigenv
-[diff "jupyternotebook"]
-	command = git-nbdiffdriver diff
-[merge "jupyternotebook"]
-	driver = git-nbmergedriver merge %O %A %B %L %P
-	name = jupyter notebook merge driver
-[difftool "nbdime"]
-	cmd = git-nbdifftool diff \"$LOCAL\" \"$REMOTE\" \"$BASE\"
-[difftool]
-	prompt = false
-[mergetool "nbdime"]
-	cmd = git-nbmergetool merge \"$BASE\" \"$LOCAL\" \"$REMOTE\" \"$MERGED\"
-[mergetool]
-	prompt = false
-[fetch]
-	prune = true
-[http]
-	cookiefile = ~/.gitcookies
-[init]
-	templateDir = /Users/shsharma/.git-template
+		path = ~/.gitconfigenv
