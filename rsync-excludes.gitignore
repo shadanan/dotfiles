@@ -1,0 +1,55 @@
+# Usage: rsync -av --delete --filter=":- .gitignore" ~ remote:backup/location
+
+# trash
+.Trash/
+
+# build
+build/
+dist/
+target/
+
+# cache / temporary
+__pycache__/
+.cache/
+.cargo/registry/
+.docker/
+.env/
+.rustup/
+.venv/
+cache/
+Cache/
+caches/
+Caches/
+CacheStorage/
+Library/Android/
+Library/Application Support/Claude/Code Cache/
+Library/Application Support/Code/CachedData/
+Library/Application Support/Code/User/History/
+Library/Application Support/FileProvider/
+Library/Application Support/Muse Hub/Downloads/
+Library/Application Support/Steam/appcache/
+Library/Application Support/Steam/config/htmlcache/
+Library/Application Support/Steam/Steam.AppBundle/
+Library/Caches/
+Library/Developer/
+Library/Logs/
+Library/Mail/
+Library/Metadata/CoreSpotlight/
+Library/Saved Application State/
+node_modules/
+pipx/
+pnpm/
+pyinstaller/
+share/uv/
+site-packages/
+virtualenv/
+
+# generated
+.DS_Store
+Library/Containers/
+Library/Group Containers/
+
+# available online
+.vscode/extensions/
+Library/Application Support/Steam/steamapps/common/
+Library/CloudStorage/

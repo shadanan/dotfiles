@@ -10,6 +10,9 @@ symlink() {
 # X
 symlink "$DOTFILES_DIR/.Xresources" "$HOME/.Xresources"
 
+# rsync
+symlink "$DOTFILES_DIR/rsync-excludes.gitignore" "$HOME/.gitignore"
+
 # vim
 symlink "$DOTFILES_DIR/.vimrc" "$HOME/.vimrc"
 mkdir -p "$HOME/.vim/autoload"
