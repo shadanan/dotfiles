@@ -59,9 +59,6 @@ source "$HOME/.shad.zsh-theme"
 # Activate zsh syntax highlighting
 source "$HOME/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 
-# Telegram notifier
-source "$HOME/.telegram.zsh"
-
 # Configure venv
 export VIRTUAL_ENV_DISABLE_PROMPT=0
 
