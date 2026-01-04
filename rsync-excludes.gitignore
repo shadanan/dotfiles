@@ -1,20 +1,21 @@
-# Usage: rsync -av --delete --filter=":- .gitignore" ~ remote:backup/location
+# Usage: rsync -av --filter=":- .gitignore" ~/ remote:backup/location/
 
 # trash
 .Trash/
 
+# rust
+.cargo/
+.rustup/
+
 # build
 build/
 dist/
-target/
 
 # cache / temporary
 __pycache__/
 .cache/
-.cargo/registry/
 .docker/
 .env/
-.rustup/
 .venv/
 cache/
 Cache/
