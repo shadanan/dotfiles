@@ -49,6 +49,3 @@ mkdir -p "$HOME/.local/bin"
 # tmux
 mkdir -p "$HOME/.tmux/plugins"
 symlink "$DOTFILES_DIR/.tmux.conf" "$HOME/.tmux.conf"
-
-# fzf-git
-symlink "$DOTFILES_DIR/fzf-git.sh-main" "$HOME/.fzf-git.sh"
