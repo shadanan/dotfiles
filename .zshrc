@@ -62,5 +62,8 @@ source "$HOME/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 # Configure venv
 export VIRTUAL_ENV_DISABLE_PROMPT=0
 
+# fzf
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
 # atuin
 [ -x "$(command -v atuin)" ] && eval "$(atuin init zsh)"

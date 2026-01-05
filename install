@@ -19,6 +19,11 @@ install_from_github "ConradIrwin/vim-bracketed-paste" master
 
 . makelinks
 
+# fzf
+install_from_github "junegunn/fzf" master
+fzf-master/install --all
+install_from_github "junegunn/fzf-git.sh" main
+
 # tmux Plugin Manager
 mkdir -p "$HOME/.tmux/plugins"
 rm -rf ~/.tmux/plugins/tpm
