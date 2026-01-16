@@ -66,4 +66,4 @@ export VIRTUAL_ENV_DISABLE_PROMPT=0
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # atuin
-[ -x "$(command -v atuin)" ] && eval "$(atuin init zsh)"
+[ -x "$(command -v atuin)" ] && eval "$(atuin init zsh --disable-up-arrow)"
