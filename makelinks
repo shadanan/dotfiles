@@ -3,7 +3,7 @@
 DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 symlink() {
-  rm -f $2
+  rm -rf $2
   ln -sv $1 $2
 }
 
@@ -50,5 +50,6 @@ mkdir -p "$HOME/.local/bin"
 mkdir -p "$HOME/.tmux/plugins"
 symlink "$DOTFILES_DIR/.tmux.conf" "$HOME/.tmux.conf"
 
-# fzf-git
-symlink "$DOTFILES_DIR/fzf-git.sh-main" "$HOME/.fzf-git.sh"
+# atuin
+mkdir -p "$HOME/.config"
+symlink "$DOTFILES_DIR/atuin" "$HOME/.config/atuin"
