@@ -35,6 +35,13 @@ if [ -x "$(command -v git)" ]; then
   }
 fi
 
+# gh-watch-merge
+if [ -x "$(command -v gh)" ]; then
+  gh-watch-merge() {
+    gh pr checks "$@" --watch && gh pr merge "$@" --squash
+  }
+fi
+
 # resize
 if [[ "$(uname)" == "Darwin" ]]; then
   resize() {
