@@ -127,3 +127,5 @@ fi
 if [ -x "$(command -v vim)" ]; then
   export EDITOR=$(which vim)
 fi
+
+alias stalign='npx --yes @storyteller-platform/align@latest'
