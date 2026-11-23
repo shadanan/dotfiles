@@ -16,4 +16,4 @@ fi
 PS1='\[\033[01;36m\]\u\[\033[00m\]@\[\033[01;32m\]\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\] \[\033[01;37m\]\$\[\033[00m\] '
 
 # atuin
-[ -x "$(command -v atuin)" ] && eval "$(atuin init zsh --disable-up-arrow)"
+[ -x "$(command -v atuin)" ] && eval "$(atuin init bash --disable-up-arrow)"
